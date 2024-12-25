@@ -1,4 +1,5 @@
 import './App.scss'
+import Cityscape from './components/Cityscape/Cityscape'
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <button>
         Button
       </button>
+      <Cityscape />
     </>
   )
 }

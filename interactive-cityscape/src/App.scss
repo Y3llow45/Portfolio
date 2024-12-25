@@ -1,3 +1,4 @@
+@use 'sass:color';
 $btn-color: #3490dc;
 
 #root {
@@ -10,7 +11,7 @@ $btn-color: #3490dc;
 button {
   background-color: $btn-color;
   &:hover {
-    background-color: darken($btn-color, 10%);
+    background-color: color.adjust($btn-color, $lightness: -10%);
   }
   color: white;
   font-weight: bold;
