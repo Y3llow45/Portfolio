@@ -4,11 +4,12 @@ import Building from '../Building/Building';
 const Cityscape: React.FC = () => {
   return (
     <div className="cityscape">
-      {/* Render 4 buildings */}
-      <Building label="Front-End" />
-      <Building label="Back-End" />
-      <Building label="Cybersecurity" />
-      <Building label="DevOps" />
+      <img src="/images/cloud.png" alt="cloud" className="cloud" style={{ animationDelay: '0s' }} />
+      <img src="/images/cloud.png" alt="cloud" className="cloud" style={{ animationDelay: '10s' }} />
+      <Building label="Front-End" imageSrc="/images/frontend.png" />
+      <Building label="Back-End" imageSrc="/images/backend.png" />
+      <Building label="Cybersecurity" imageSrc="/images/cybersecurity.png" />
+      <Building label="DevOps" imageSrc="/images/devops.png" />
     </div>
   );
 };
