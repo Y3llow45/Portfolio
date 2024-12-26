@@ -4,9 +4,6 @@ import Cityscape from './components/Cityscape/Cityscape'
 function App() {
   return (
     <>
-      <button>
-        Button
-      </button>
       <Cityscape />
     </>
   )
