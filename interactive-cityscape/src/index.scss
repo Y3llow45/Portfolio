@@ -13,6 +13,7 @@ body {
   align-items: flex-end;
   height: 100%;
   padding: 20px;
+  margin-top: 1%;
 }
 
 .building {
@@ -24,7 +25,7 @@ body {
   transition: transform 0.3s ease;
 
   .building-image {
-    width: 100px;
+    width: 130px;
     height: auto;
     filter: brightness(0.8);
     transition: transform 0.3s ease, filter 0.3s ease;
