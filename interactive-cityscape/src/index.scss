@@ -43,7 +43,7 @@ body {
     transform: scale(1.1);
 
     .building-image {
-      filter: brightness(1);
+      filter: brightness(1.1);
       transform: translateY(-10px);
     }
   }
@@ -60,6 +60,20 @@ body {
 
 }
 
+.cloud {
+  position: absolute;
+  top: 20%;
+  opacity: 0.6;
+}
+
+.cloud-one {
+  transform: translateX(-62vw);
+}
+
+.cloud-two {
+  transform: translateX(62vw);
+}
+
 @keyframes move-clouds {
   0% {
     transform: translateX(-60vw);
@@ -73,23 +87,38 @@ body {
   
 }
 
-.cloud {
-  position: absolute;
-  top: 20%;
-  opacity: 0.6;
-  transform: translateX(-55vw);
+@keyframes move-clouds2 {
+  0% {
+    transform: translateX(60vw);
+  }
+  50% {
+    transform: translateX(-60vw);
+  }
+  100% {
+    transform: translateX(-60vw);
+  }
+  
 }
 
-.cloud-1 { animation: move-clouds 20s linear infinite; top: 10%; }
-.cloud-2 { animation: move-clouds 20s linear infinite; top: 12%; }
-.cloud-3 { animation: move-clouds 20s linear infinite; top: 14%; }
-.cloud-4 { animation: move-clouds 20s linear infinite; top: 10%; }
-.cloud-5 { animation: move-clouds 20s linear infinite; top: 12%; }
-.cloud-6 { animation: move-clouds 20s linear infinite; top: 14%; }
-.cloud-7 { animation: move-clouds 20s linear infinite; top: 10%; }
-.cloud-8 { animation: move-clouds 20s linear infinite; top: 12%; }
-.cloud-9 { animation: move-clouds 20s linear infinite; top: 14%; }
+.cloud-1 { animation: move-clouds 41s linear infinite; top: 10%; }
+.cloud-2 { animation: move-clouds 36s linear infinite; top: 12%; }
+.cloud-3 { animation: move-clouds 51s linear infinite; top: 14%; }
+.cloud-4 { animation: move-clouds 43s linear infinite; top: 9%; }
+.cloud-5 { animation: move-clouds 45s linear infinite; top: 13%; }
+.cloud-6 { animation: move-clouds 34s linear infinite; top: 15%; }
+.cloud-7 { animation: move-clouds 40s linear infinite; top: 10%; }
+.cloud-8 { animation: move-clouds 52s linear infinite; top: 12%; }
+.cloud-9 { animation: move-clouds 42s linear infinite; top: 14%; }
 
+.cloud-10 { animation: move-clouds2 31s linear infinite; top: 7%; }
+.cloud-11 { animation: move-clouds2 26s linear infinite; top: 13%; }
+.cloud-12 { animation: move-clouds2 39s linear infinite; top: 17%; }
+.cloud-13 { animation: move-clouds2 50s linear infinite; top: 8%; }
+.cloud-14 { animation: move-clouds2 28s linear infinite; top: 11%; }
+.cloud-15 { animation: move-clouds2 47s linear infinite; top: 16%; }
+.cloud-16 { animation: move-clouds2 34s linear infinite; top: 6%; }
+.cloud-17 { animation: move-clouds2 33s linear infinite; top: 12%; }
+.cloud-18 { animation: move-clouds2 48s linear infinite; top: 17%; }
 
 .project-display {
   position: absolute;

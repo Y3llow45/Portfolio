@@ -16,15 +16,25 @@ const Cityscape: React.FC = () => {
     <div className="cityscape">
       {!activeBuilding && (
         <>
-          <img src="/images/clouds1.png" alt="cloud" className="cloud cloud-1" style={{ animationDelay: '0s' }} />
-          <img src="/images/clouds2.png" alt="cloud" className="cloud cloud-2" style={{ animationDelay: '1s' }} />
-          <img src="/images/clouds3.png" alt="cloud" className="cloud cloud-3" style={{ animationDelay: '2s' }} />
-          <img src="/images/clouds4.png" alt="cloud" className="cloud cloud-4" style={{ animationDelay: '3s' }} />
-          <img src="/images/clouds5.png" alt="cloud" className="cloud cloud-5" style={{ animationDelay: '4s' }} />
-          <img src="/images/clouds6.png" alt="cloud" className="cloud cloud-6" style={{ animationDelay: '5s' }} />
-          <img src="/images/clouds7.png" alt="cloud" className="cloud cloud-7" style={{ animationDelay: '6s' }} />
-          <img src="/images/clouds8.png" alt="cloud" className="cloud cloud-8" style={{ animationDelay: '7s' }} />
-          <img src="/images/clouds9.png" alt="cloud" className="cloud cloud-9" style={{ animationDelay: '8s' }} />
+          <img src="/images/clouds1.png" alt="cloud" className="cloud cloud-one cloud-1" style={{ animationDelay: '0s' }} />
+          <img src="/images/clouds2.png" alt="cloud" className="cloud cloud-one cloud-2" style={{ animationDelay: '1s' }} />
+          <img src="/images/clouds3.png" alt="cloud" className="cloud cloud-one cloud-3" style={{ animationDelay: '3s' }} />
+          <img src="/images/clouds4.png" alt="cloud" className="cloud cloud-one cloud-4" style={{ animationDelay: '3.5s' }} />
+          <img src="/images/clouds5.png" alt="cloud" className="cloud cloud-one cloud-5" style={{ animationDelay: '4s' }} />
+          <img src="/images/clouds6.png" alt="cloud" className="cloud cloud-one cloud-6" style={{ animationDelay: '6.4s' }} />
+          <img src="/images/clouds7.png" alt="cloud" className="cloud cloud-one cloud-7" style={{ animationDelay: '8s' }} />
+          <img src="/images/clouds8.png" alt="cloud" className="cloud cloud-one cloud-8" style={{ animationDelay: '9.4s' }} />
+          <img src="/images/clouds9.png" alt="cloud" className="cloud cloud-one cloud-9" style={{ animationDelay: '11.7s' }} />
+
+          <img src="/images/clouds1.png" alt="cloud" className="cloud cloud-two cloud-10" style={{ animationDelay: '0s' }} />
+          <img src="/images/clouds2.png" alt="cloud" className="cloud cloud-two cloud-11" style={{ animationDelay: '2s' }} />
+          <img src="/images/clouds3.png" alt="cloud" className="cloud cloud-two cloud-12" style={{ animationDelay: '2.5s' }} />
+          <img src="/images/clouds4.png" alt="cloud" className="cloud cloud-two cloud-13" style={{ animationDelay: '4s' }} />
+          <img src="/images/clouds5.png" alt="cloud" className="cloud cloud-two cloud-14" style={{ animationDelay: '5s' }} />
+          <img src="/images/clouds6.png" alt="cloud" className="cloud cloud-two cloud-15" style={{ animationDelay: '6.5s' }} />
+          <img src="/images/clouds7.png" alt="cloud" className="cloud cloud-two cloud-16" style={{ animationDelay: '8s' }} />
+          <img src="/images/clouds8.png" alt="cloud" className="cloud cloud-two cloud-17" style={{ animationDelay: '9.7s' }} />
+          <img src="/images/clouds9.png" alt="cloud" className="cloud cloud-two cloud-18" style={{ animationDelay: '11s' }} />
         </>
       )}
       
