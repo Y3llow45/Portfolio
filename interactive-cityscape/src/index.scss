@@ -55,9 +55,9 @@ body {
 
     .building-label {
       display: block;
+      opacity: 1;
     }
   }
-
 }
 
 .cloud {
@@ -141,6 +141,7 @@ body {
     font-size: 1rem;
     line-height: 1.5;
   }
+  
   .reset-button {
     margin-top: 20px;
     background: #3182ce;

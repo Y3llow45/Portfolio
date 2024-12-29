@@ -1,15 +1,48 @@
 import React, { useState } from 'react';
 import Building from '../Building/Building';
+import gsap from 'gsap';
 
 const Cityscape: React.FC = () => {
   const [activeBuilding, setActiveBuilding] = useState<string | null>(null);
 
-  const handleBuildingClick = (label: string) => {
+  const handleBuildingClick = (label: string, index: number) => {
     if (activeBuilding === label) {
-      setActiveBuilding(null);
-    } else {
-      setActiveBuilding(label);
+      return;
     }
+
+    gsap.to(".building", {
+      opacity: 0,
+      duration: 3,
+    });
+
+    gsap.to(".cloud", {
+      opacity: 0,
+      duration: 3,
+    });
+
+    gsap.to(`.building:nth-child(${index + 1})`, {
+      x: -200,
+      delay: index * 0.5,
+      opacity: 1,
+      duration: 0,
+    });
+
+    setActiveBuilding(label);
+  };
+
+  const handleGoBack = () => {
+    gsap.to(".building", {
+      x: 0,
+      opacity: 1,
+      duration: 2,
+    });
+
+    gsap.to(".cloud", {
+      opacity: 0.6,
+      duration: 2,
+    });
+
+    setActiveBuilding(null);
   };
 
   return (
@@ -40,10 +73,15 @@ const Cityscape: React.FC = () => {
       
       {!activeBuilding ? (
         <>
-          <Building label="Front-End" imageSrc="/images/frontend.png" onClick={handleBuildingClick} />
-          <Building label="Back-End" imageSrc="/images/backend.png" onClick={handleBuildingClick} />
-          <Building label="Cybersecurity" imageSrc="/images/cybersecurity.png" onClick={handleBuildingClick} />
-          <Building label="DevOps" imageSrc="/images/devops.png" onClick={handleBuildingClick} />
+          {["FrontEnd", "BackEnd", "Cybersecurity", "DevOps"].map((label, index) => (
+            <Building
+              key={label}
+              label={label}
+              imageSrc={`/images/${label.toLowerCase()}.png`}
+              onClick={handleBuildingClick}
+              index={index}
+            />
+          ))}
         </>
       ) : (
         <>
@@ -52,11 +90,12 @@ const Cityscape: React.FC = () => {
             imageSrc={`/images/${activeBuilding.toLowerCase()}.png`}
             isActive={true}
             onClick={handleBuildingClick}
+            index={0}
           />
           <div className="project-display">
             <h1>{activeBuilding} Projects</h1>
             <p>A lot of text will go here to describe your projects!</p>
-            <button onClick={() => setActiveBuilding(null)} className="reset-button">
+            <button onClick={() => handleGoBack} className="reset-button">
               Go Back
             </button>
           </div>
