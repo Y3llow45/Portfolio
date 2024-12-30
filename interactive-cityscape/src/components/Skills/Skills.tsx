@@ -1,36 +1,63 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import '../../styles/Skills.scss';
 
-const skills = [
-  { name: 'React', level: 90 },
-  { name: 'JavaScript', level: 85 },
-  { name: 'CSS', level: 80 },
-  { name: 'Node.js', level: 75 },
-  { name: 'Python', level: 70 },
-]
+const skillsData = {
+  frontend: ['React', 'Vue.js', 'CSS/Sass', 'JavaScript', 'TypeScript', 'HTML5'],
+  backend: ['Node.js', 'Express', 'Python', 'Django', 'PostgreSQL', 'MongoDB'],
+};
 
-export default function Skills() {
-  return (
-    <div className="min-h-screen flex items-center justify-center py-20">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center text-blue-400">Skills</h2>
-        <div className="space-y-8">
-          {skills.map((skill) => (
-            <div key={skill.name} className="relative">
-              <p className="text-lg mb-2">{skill.name}</p>
-              <div className="h-4 w-full bg-gray-700 rounded-full">
-                <motion.div
-                  className="h-full bg-blue-500 rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
+interface SkillItemProps {
+  skill: string;
+  index: number;
 }
 
+const SkillItem: React.FC<SkillItemProps> = ({ skill, index }) => {
+  return (
+    <motion.li
+      className="skill-item"
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      {skill}
+    </motion.li>
+  );
+};
+
+const Skills = () => {
+  return (
+    <section className="skills">
+      <h2>My Skills</h2>
+      <div className="skills-container">
+        <motion.div
+          className="skill-category frontend"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h3>Frontend</h3>
+          <ul>
+            {skillsData.frontend.map((skill, index) => (
+              <SkillItem key={skill} skill={skill} index={index} />
+            ))}
+          </ul>
+        </motion.div>
+        <motion.div
+          className="skill-category backend"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h3>Backend</h3>
+          <ul>
+            {skillsData.backend.map((skill, index) => (
+              <SkillItem key={skill} skill={skill} index={index} />
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Skills;

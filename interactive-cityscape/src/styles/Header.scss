@@ -1,0 +1,21 @@
+@import './variables';
+
+.header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: $secondary-color;
+  }
+}

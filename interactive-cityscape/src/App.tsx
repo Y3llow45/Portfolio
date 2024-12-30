@@ -1,20 +1,22 @@
 import './App.scss'
 import { motion } from 'framer-motion'
 import About from './components/About/About'
-import Hero from './components/Hero/Hero'
 import Skills from './components/Skills/Skills'
 import Projects from './components/Projects/Projects'
+import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation'
+import Header from './components/Header/Header'
 
 function App() {
   return (
     <>
       <motion.div
+      className="app"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gray-900 text-white"
+      transition={{ duration: 1 }}
     >
-      <Hero />
+      <BackgroundAnimation />
+      <Header />
       <About />
       <Skills />
       <Projects />

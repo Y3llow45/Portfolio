@@ -1,20 +1,22 @@
-@use 'sass:color';
-$btn-color: #3490dc;
+@import './styles/variables';
 
-#root {
-  max-width: 1280px;
+.app {
+  font-family: 'Arial', sans-serif;
+  color: $text-color;
+  background-color: $bg-color;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-button {
-  background-color: $btn-color;
-  &:hover {
-    background-color: color.adjust($btn-color, $lightness: -10%);
-  }
-  color: white;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-}
