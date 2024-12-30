@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import '../../styles/Skills.scss';
+import './Skills.scss';
 
 const skillsData = {
   frontend: ['React', 'Vue.js', 'CSS/Sass', 'JavaScript', 'TypeScript', 'HTML5'],

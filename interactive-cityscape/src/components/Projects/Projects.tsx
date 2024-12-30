@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import '../../styles/Projects.scss';
+import './Projects.scss';
 
 const projectsData = [
   { id: 1, title: 'E-commerce Platform', description: 'A full-stack e-commerce solution built with React and Node.js.' },
