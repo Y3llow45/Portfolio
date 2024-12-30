@@ -15,7 +15,7 @@ const Header = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        John Doe
+        Borislav Hristov
       </motion.h1>
       <motion.h2
         initial={{ opacity: 0 }}
