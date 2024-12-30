@@ -8,6 +8,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 120 }}
+      style={{ height: '100vh' }}
     >
       <motion.h1
         initial={{ opacity: 0 }}

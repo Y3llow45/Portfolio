@@ -9,18 +9,26 @@ import Header from './components/Header/Header'
 function App() {
   return (
     <>
-      <motion.div
-      className="app"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
       <BackgroundAnimation />
-      <Header />
-      <About />
-      <Skills />
-      <Projects />
-    </motion.div>
+      <motion.div
+        className="app scroller"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <section>
+          <Header />
+        </section>
+        <section>
+          <About />
+        </section>
+        <section>
+          <Skills />
+        </section>
+        <section>
+          <Projects />
+        </section>
+      </motion.div>
     </>
   )
 }
