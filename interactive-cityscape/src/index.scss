@@ -1,7 +1,10 @@
+@use './style-variables/variables.scss' as *;
+
 body {
   margin: 0;
   padding: 0;
-  cursor: url('path/to/custom-cursor.png'), auto;
+  cursor: url('/images/3.png'), auto;
+  background-color: $bg-color;
 }
 
 .scroller {
@@ -12,7 +15,7 @@ body {
 
 .scroller section {
   scroll-snap-align: start;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;

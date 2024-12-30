@@ -1,11 +1,11 @@
-@import './style-variables/variables.scss';
+@use './style-variables/variables.scss' as *;
 
 .app {
   font-family: 'Arial', sans-serif;
-  color: $text-color;
-  background-color: $bg-color;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+  color: $text-color;
 }
 
 section {

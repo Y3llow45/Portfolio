@@ -1,4 +1,4 @@
-@import '../../style-variables/variables.scss';
+@use '../../style-variables/variables.scss' as *;
 
 .skills {
   .skills-container {
