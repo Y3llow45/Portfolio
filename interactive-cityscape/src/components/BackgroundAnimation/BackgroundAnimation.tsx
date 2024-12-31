@@ -14,6 +14,8 @@ interface Particle {
 
 const BackgroundAnimation: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const mousePosition = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const attractMode = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -91,9 +93,21 @@ const BackgroundAnimation: React.FC = () => {
     const updateParticles = () => {
       for (let i = 0; i < particleCount; i++) {
         const p = particles[i];
-        p.angle += p.speed * 0.02;
-        p.x += Math.cos(p.angle) * p.speedX;
-        p.y += Math.sin(p.angle) * p.speedY;
+        const dx = mousePosition.current.x - p.x;
+        const dy = mousePosition.current.y - p.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const maxDistance = 100;
+        const force = (maxDistance - distance) / maxDistance;
+
+        if (attractMode.current && distance < maxDistance) {
+          p.speedX += forceDirectionX * force * 15;
+          p.speedY += forceDirectionY * force * 15;
+        }
+
+        p.x += p.speedX;
+        p.y += p.speedY;
 
         if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
         if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
@@ -107,10 +121,33 @@ const BackgroundAnimation: React.FC = () => {
 
     animate();
 
+    const handleMouseMove = (event: MouseEvent) => {
+      mousePosition.current.x = event.clientX;
+      mousePosition.current.y = event.clientY;
+    };
+
+    const handleMouseDown = (event: MouseEvent) => {
+      if (event.button === 0) {
+        attractMode.current = true;
+      }
+    };
+
+    const handleMouseUp = (event: MouseEvent) => {
+      if (event.button === 0) {
+        attractMode.current = false;
+      }
+    };
+
     window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
