@@ -6,6 +6,7 @@ body {
   cursor: url('/images/3.png'), auto;
   background-color: $bg-color;
   scroll-behavior: smooth;
+  user-select: none;
 }
 
 .scroller {
@@ -17,19 +18,13 @@ body {
 .scroller section {
   scroll-snap-align: start;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 }
 
-::-webkit-scrollbar {
-  width: 18px;
-}
-
-::-webkit-scrollbar-track {
-  background: $bg-secondary;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: $primary-color;
-  border-radius: 10px;
-  border: 3px solid $bg-secondary;
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $primary-color $bg-secondary;
 }
