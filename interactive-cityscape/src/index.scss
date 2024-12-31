@@ -5,6 +5,7 @@ body {
   padding: 0;
   cursor: url('/images/3.png'), auto;
   background-color: $bg-color;
+  scroll-behavior: smooth;
 }
 
 .scroller {
@@ -20,4 +21,18 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
+  border-radius: 10px;
+  border: 3px solid $bg-secondary;
 }

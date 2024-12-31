@@ -80,7 +80,7 @@ const BackgroundAnimation: React.FC = () => {
             (p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2
           );
           if (distance < 100) {
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.23)';
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -102,8 +102,8 @@ const BackgroundAnimation: React.FC = () => {
         const force = (maxDistance - distance) / maxDistance;
 
         if (attractMode.current && distance < maxDistance) {
-          p.speedX += forceDirectionX * force * 15;
-          p.speedY += forceDirectionY * force * 15;
+          p.speedX += forceDirectionX * force * 2;
+          p.speedY += forceDirectionY * force * 2;
         }
 
         p.x += p.speedX;
