@@ -6,10 +6,29 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   p {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     line-height: 1.6;
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
   }
+}
+
+.btn-copy {
+  border-radius: 5px;
+  background-color: #FFFFFF !important;
+  //font-size: 1.4rem;
+  margin-left: 0.5rem;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-copy:active {
+  background-color: #ff0000 !important;
+}
+
+.btn-img {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
 }
