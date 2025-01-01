@@ -10,7 +10,7 @@ const About = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        I'm a passionate Full Stack Developer with a keen eye for design and a love for creating seamless user experiences. With expertise in both frontend and backend technologies, I bring ideas to life through clean, efficient, and scalable code.
+        I'm a Full Stack Developer who likes building innovative projects. I'm skilled at creating good looking designs. Writing the back-end logic and solving problems is what I enjoy the most. I'm always curious to learn new tools and technologies, so that I can improve my skills and build better projects. I like to turn ideas into something real that people can use. If you think I would be a great fit for you team, feel free to email me at: <span className='selectable-text'>hristovborislav45@gmail.com</span>. 
       </motion.p>
     </section>
   );
