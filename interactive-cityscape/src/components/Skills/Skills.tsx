@@ -4,11 +4,9 @@ import './Skills.scss';
 const skillsData = {
   frontend: ['React', 'Angular', 'CSS/Sass', 'JavaScript', 'TypeScript', 'HTML5', 'Framer Motion', 'Material-UI', 'GraphQL'],
   backend: ['Node.js', 'Express', 'Python', 'Django', 'Flask', 'Go', 'RabbitMQ', 'C#', '.NET', 'PHP', 'C++', 'IoT'],
-  languages: ['JavaScript', 'TypeScript', 'Python', 'Go', 'C#', 'C++', 'PHP'],
   databases: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'Redis', 'Firebase', 'ORMs/ODMs'],
   devops: ['Docker', 'Kubernetes', 'CI/CD principles', 'Github Actions'],
   testing: ['Jest', 'Cypress', 'Selenium', 'Postman'],
-  cybersecurity: ['OWASP', 'NIST', 'ISO 27001', 'Penetration Testing', 'Incident Response', 'Security Audits'],
 };
 
 interface SkillItemProps {

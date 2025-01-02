@@ -19,7 +19,7 @@ const projectsData = [
 const Projects = () => {
   return (
     <section className="projects">
-      <h2>My top 12 projects (38 total)</h2>
+      <h2>My top 12 projects (34 total)</h2>
       <div className="projects-grid">
         {projectsData.map((project, index) => (
           <motion.div
