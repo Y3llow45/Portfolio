@@ -25,9 +25,7 @@ function App() {
         <section>
           <Skills />
         </section>
-        <section>
           <Projects />
-        </section>
       </motion.div>
     </>
   )

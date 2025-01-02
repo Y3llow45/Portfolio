@@ -3,6 +3,7 @@ import './Header.scss';
 
 const Header = () => {
   return (
+    <section className="header">
     <motion.header
       className="header"
       initial={{ y: -100 }}
@@ -24,6 +25,7 @@ const Header = () => {
         Full Stack Developer
       </motion.h2>
     </motion.header>
+    </section>
   );
 };
 
