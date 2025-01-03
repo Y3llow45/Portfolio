@@ -2,7 +2,9 @@ import { motion } from 'framer-motion';
 import './Projects.scss';
 
 const projectsData = [
-  { id: 1, title: 'Learn Electronics', description: 'Learn about electrical components and how circuits work. You can learn or teach others by making lessons.' },
+  { id: 1, title: 'Learn Electronics', description: 'Learn about electrical components and how circuits work. You can learn or teach others by making lessons.',
+    technologies: ['React', 'Redux', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Socket.io']
+  },
   { id: 2, title: 'Chato', description: 'Encrypted real-time chat app, built for secure communication with a focus on privacy and speed.' },
   { id: 3, title: 'Steganography', description: 'Desktop app for hiding secrete messages in images using Steganography.' },
   { id: 4, title: 'Tic-tac-toe cheat', description: `Automated cheat for google's tic-tac-toe game.` },
