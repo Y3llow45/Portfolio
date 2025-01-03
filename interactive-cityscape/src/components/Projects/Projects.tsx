@@ -3,7 +3,26 @@ import './Projects.scss';
 
 const projectsData = [
   { id: 1, title: 'Learn Electronics', description: 'Learn about electrical components and how circuits work. You can learn or teach others by making lessons.',
-    technologies: ['React', 'Redux', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Socket.io']
+    technologies: ['React',
+      'Arduino',
+      'CCS',
+      'Express',
+      'Framermotion',
+      'JavaScript',
+      'MongoDB',
+      'Mongoose',
+      'Next.js',
+      'Node.js',
+      'Nodemon',
+      'Prisma',
+      'Python',
+      'RabbitMQ',
+      'Redux',
+      'SaSS',
+      'Selenium',
+      'Socket.io',
+      'TypeScript',
+      'HTML']
   },
   { id: 2, title: 'Chato', description: 'Encrypted real-time chat app, built for secure communication with a focus on privacy and speed.' },
   { id: 3, title: 'Steganography', description: 'Desktop app for hiding secrete messages in images using Steganography.' },
@@ -17,6 +36,29 @@ const projectsData = [
   { id: 11, title: 'Cheat for perfect circle', description: 'Cheat for perfect circle game with ~98% accuracy.' },
   { id: 12, title: 'IR-Remote LEDs with Arduino', description: 'Controll LEDs using IR remote.' },
 ];
+
+const imgUrls: { [key: string]: string } = {
+  'React': '/images/react.svg',
+  'Arduino': '/images/arduino.svg',
+  'CCS': '/images/css3.svg',
+  'Express': '/images/express.png',
+  'Framermotion': '/images/framermotion.png',
+  'JavaScript': '/images/javascript.svg',
+  'MongoDB': '/images/mongodb.svg',
+  'Mongoose': '/images/mongoose.png',
+  'Next.js': '/images/nextjs.svg',
+  'Node.js': '/images/node.js.png',
+  'Nodemon': '/images/nodemon.svg',
+  'Prisma': '/images/prisma.png',
+  'Python': '/images/python.svg',
+  'RabbitMQ': '/images/rabbitmq.svg',
+  'Redux': '/images/redux.svg',
+  'SaSS': '/images/sass.svg',
+  'Selenium': '/images/selenium.svg',
+  'Socket.io': '/images/socket.io.png',
+  'TypeScript': '/images/typescript.svg',
+  'HTML': '/images/html.svg',
+}
 
 const Projects = () => {
   return (
@@ -33,6 +75,13 @@ const Projects = () => {
           >
             <h3>{project.title}</h3>
             <p>{project.description}</p>
+            {project.technologies ? (
+              <>
+                {project.technologies.map((tech, index) => (
+                  <img key={index} src={imgUrls[tech]} alt={tech} className='tech-svg' />
+                ))}
+              </>
+            ) : null}
           </motion.div>
         ))}
       </div>
