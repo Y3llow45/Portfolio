@@ -19,25 +19,26 @@
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    //width: 30rem;
 
     &:hover {
       transform: translateY(-5px);
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
       color: $primary-color;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.4rem;
       color: $text-color;
     }
 
     .tech-svg{
       width: 40px;
+      margin-left: 4px;
+      margin-right: 4px;
     }
   }
 }

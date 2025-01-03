@@ -2,28 +2,8 @@ import { motion } from 'framer-motion';
 import './Projects.scss';
 
 const projectsData = [
-  { id: 1, title: 'Learn Electronics', description: 'Learn about electrical components and how circuits work. You can learn or teach others by making lessons.',
-    technologies: ['React',
-      'Arduino',
-      'CCS',
-      'Express',
-      'Framermotion',
-      'JavaScript',
-      'MongoDB',
-      'Mongoose',
-      'Next.js',
-      'Node.js',
-      'Nodemon',
-      'Prisma',
-      'Python',
-      'RabbitMQ',
-      'Redux',
-      'SaSS',
-      'Selenium',
-      'Socket.io',
-      'TypeScript',
-      'HTML']
-  },
+  { id: 1, title: 'Learn Electronics', description: 'Website about electrical components and how circuits work. You can learn or teach others by making lessons.',
+    technologies: ['HTML', 'CCS', 'React', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'Mongoose']},
   { id: 2, title: 'Chato', description: 'Encrypted real-time chat app, built for secure communication with a focus on privacy and speed.' },
   { id: 3, title: 'Steganography', description: 'Desktop app for hiding secrete messages in images using Steganography.' },
   { id: 4, title: 'Tic-tac-toe cheat', description: `Automated cheat for google's tic-tac-toe game.` },
@@ -34,7 +14,7 @@ const projectsData = [
   { id: 9, title: 'DrawingBe', description: 'Desktop app that draws cool things using turtle library.' },
   { id: 10, title: 'Break reminder', description: 'Desktop app that reminds you to take a break after 30 mins of work.' },
   { id: 11, title: 'Cheat for perfect circle', description: 'Cheat for perfect circle game with ~98% accuracy.' },
-  { id: 12, title: 'IR-Remote LEDs with Arduino', description: 'Controll LEDs using IR remote.' },
+  { id: 12, title: 'IR-Remote LEDs', description: 'Controll LEDs using IR remote.' },
 ];
 
 const imgUrls: { [key: string]: string } = {
