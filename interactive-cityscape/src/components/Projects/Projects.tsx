@@ -3,8 +3,9 @@ import './Projects.scss';
 
 const projectsData = [
   { id: 1, title: 'Learn Electronics', description: 'Website about electrical components and how circuits work. You can learn or teach others by making lessons.',
-    technologies: ['HTML', 'CCS', 'React', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'Mongoose']},
-  { id: 2, title: 'Chato', description: 'Encrypted real-time chat app, built for secure communication with a focus on privacy and speed.' },
+    technologies: ['HTML', 'CCS', 'React', 'JavaScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'MongoDB', 'Mongoose']},
+  { id: 2, title: 'Chato', description: 'Encrypted real-time chat app, built for secure communication with a focus on privacy and speed.',
+    technologies: ['Vite', 'HTML', 'CCS', 'React', 'JavaScript', 'TypeScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'PostgreSQL', 'RabbitMQ', 'Socket.io','Framermotion']},
   { id: 3, title: 'Steganography', description: 'Desktop app for hiding secrete messages in images using Steganography.' },
   { id: 4, title: 'Tic-tac-toe cheat', description: `Automated cheat for google's tic-tac-toe game.` },
   { id: 5, title: 'Sixty-six game', description: 'Website for multiplayer cards game.' },
@@ -38,6 +39,9 @@ const imgUrls: { [key: string]: string } = {
   'Socket.io': '/images/socket.io.png',
   'TypeScript': '/images/typescript.svg',
   'HTML': '/images/html.svg',
+  'Vite': '/images/vite.png',
+  'PostgreSQL': '/images/postgresql.svg',
+  'JWT': '/images/jwt.svg',
 }
 
 const Projects = () => {
