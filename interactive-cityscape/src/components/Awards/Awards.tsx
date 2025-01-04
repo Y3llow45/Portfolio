@@ -38,7 +38,7 @@ const Awards = () => {
             <div style={{ display: 'flex', justifyContent: 'center'}}>
               {award.award ? <img src="/images/first.png" alt="First" className='award-img' /> : 
                 <img src="/images/laureate.png" alt="First" className='award-img' />}
-              <p>{award.title} ({award.year})</p>
+              <p className='info-text'>{award.title} ({award.year})</p>
             </div>
             <a href={award.link} target="_blank" rel="noopener noreferrer">Results</a>
           </motion.div>

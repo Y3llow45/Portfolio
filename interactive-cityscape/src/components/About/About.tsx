@@ -14,7 +14,7 @@ const About = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        I'm a Full Stack Developer who likes building innovative projects. I'm skilled at creating good looking designs. Writing the back-end logic and solving problems is what I enjoy the most. I'm always curious to learn new tools and technologies, so that I can improve my skills and build better projects. I like to turn ideas into something real that people can use. If you think I would be a great fit for you team, feel free to email me at: <span className='selectable-text'>hristovborislav45@gmail.com</span> 
+        I'm a <span className='orange-text'>Full Stack Developer</span> who likes building innovative projects. I'm skilled at creating good looking designs. Writing the back-end <span className='orange-text'>logic</span> and solving problems is what I enjoy the most. I'm always curious to <span className='orange-text'>learn</span> new tools and technologies, so that I can improve my skills and build better projects. I like to turn <span className='orange-text'>ideas</span> into something real that people can use. If you think I would be a great fit for you team, feel free to email me at: <span className='selectable-text orange-text'>hristovborislav45@gmail.com</span> 
         <button className="btn-copy" onClick={() => copy()}><img className='btn-img' src='/images/copy.png'></img></button>
       </motion.p>
     </section>
