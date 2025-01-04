@@ -3,19 +3,41 @@ import './Projects.scss';
 
 const projectsData = [
   { id: 1, title: 'Learn Electronics', description: 'Website about electrical components and how circuits work. You can learn or teach others by making lessons.',
-    technologies: ['HTML', 'CCS', 'React', 'JavaScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'MongoDB', 'Mongoose']},
+    technologies: ['HTML', 'CCS', 'React', 'JavaScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'MongoDB', 'Mongoose'],
+    github: 'https://github.com/Y3llow45/learn-electronics'},
   { id: 2, title: 'Chato', description: 'Encrypted real-time chat app, built for secure communication with a focus on privacy and speed.',
-    technologies: ['Vite', 'HTML', 'CCS', 'React', 'JavaScript', 'TypeScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'PostgreSQL', 'RabbitMQ', 'Socket.io','Framermotion']},
-  { id: 3, title: 'Steganography', description: 'Desktop app for hiding secrete messages in images using Steganography.' },
-  { id: 4, title: 'Tic-tac-toe cheat', description: `Automated cheat for google's tic-tac-toe game.` },
-  { id: 5, title: 'Sixty-six game', description: 'Website for multiplayer cards game.' },
-  { id: 6, title: 'URL shortener with analytics', description: 'Website for shortening urls, monitoring visitors and generating qr codes.' },
-  { id: 7, title: 'Small clock arduino', description: 'Small 4 digit 7 segment clock using time module and arduino.' },
-  { id: 8, title: 'Discord bot', description: 'Discord bot that greets users, solves rubiks cubes and sudokus, send bash commands to server and much more.' },
-  { id: 9, title: 'DrawingBe', description: 'Desktop app that draws cool things using turtle library.' },
-  { id: 10, title: 'Break reminder', description: 'Desktop app that reminds you to take a break after 30 mins of work.' },
-  { id: 11, title: 'Cheat for perfect circle', description: 'Cheat for perfect circle game with ~98% accuracy.' },
-  { id: 12, title: 'IR-Remote LEDs', description: 'Controll LEDs using IR remote.' },
+    technologies: ['Vite', 'HTML', 'CCS', 'React', 'JavaScript', 'TypeScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'PostgreSQL', 'RabbitMQ', 'Socket.io','Framermotion'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 3, title: 'Steganography', description: 'Desktop app for hiding secrete messages in images using Steganography.',
+    technologies: ['Python'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 4, title: 'Tic-tac-toe cheat', description: `Automated cheat for google's tic-tac-toe game.`,
+    technologies: ['Python', 'Selenium'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 5, title: 'Sixty-six game', description: 'Website for multiplayer cards game.',
+    technologies: ['HTML', 'CCS', 'React', 'JavaScript', 'Node.js', 'Express', 'Nodemon', 'Socket.io'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 6, title: 'URL shortener with analytics', description: 'Website for shortening urls, monitoring visitors and generating qr codes.',
+    technologies: ['HTML', 'CCS', 'React', 'JavaScript', 'TypeScript', 'Next.js', 'Prisma', 'Redux'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 7, title: 'Small clock arduino', description: 'Small 4 digit 7 segment clock using time module and arduino.',
+    technologies: ['Arduino'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 8, title: 'Discord bot', description: 'Discord bot that greets users, solves rubiks cubes and sudokus, send bash commands to server and much more.',
+    technologies: ['Python'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 9, title: 'DrawingBe', description: 'Desktop app that draws cool things using turtle library.',
+    technologies: ['Python'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 10, title: 'Break reminder', description: 'Desktop app that reminds you to take a break after 30 mins of work.',
+    technologies: ['Python'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 11, title: 'Cheat for perfect circle', description: 'Cheat for perfect circle game with ~98% accuracy.',
+    technologies: ['Python', 'Selenium'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
+  { id: 12, title: 'IR-Remote LEDs', description: 'Controll LEDs using IR remote.',
+    technologies: ['Arduino'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
 ];
 
 const imgUrls: { [key: string]: string } = {
@@ -66,6 +88,10 @@ const Projects = () => {
                 ))}
               </>
             ) : null}
+            <br></br>
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-button">
+              View on GitHub
+            </a>
           </motion.div>
         ))}
       </div>
