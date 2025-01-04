@@ -5,6 +5,7 @@ import Skills from './components/Skills/Skills'
 import Projects from './components/Projects/Projects'
 import BackgroundAnimation from './components/BackgroundAnimation/BackgroundAnimation'
 import Header from './components/Header/Header'
+import Awards from './components/Awards/Awards'
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
         </section>
         <section>
           <About />
+        </section>
+        <section>
+          <Awards />
         </section>
         <section>
           <Skills />
