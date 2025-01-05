@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import './Projects.scss';
+import Footer from '../Footer/Footer';
 
 const projectsData = [
   { id: 1, title: 'Learn Electronics', description: 'Website about electrical components and how circuits work. You can learn or teach others by making lessons.',
@@ -95,6 +96,7 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
+      <Footer />
     </section>
   );
 };

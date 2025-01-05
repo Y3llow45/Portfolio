@@ -29,7 +29,7 @@ function App() {
         <section>
           <Skills />
         </section>
-          <Projects />
+        <Projects />
       </motion.div>
     </>
   )
