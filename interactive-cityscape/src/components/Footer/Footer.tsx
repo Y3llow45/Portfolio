@@ -20,6 +20,12 @@ const Footer = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (!isIntersecting) {
+      setTypingText('');
+    }
+  }, [isIntersecting]);
+
   return (
     <footer className="footer" ref={setRef}>
       <motion.div
