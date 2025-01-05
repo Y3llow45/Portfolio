@@ -1,0 +1,55 @@
+@use '../../style-variables/variables.scss' as *;
+
+.footer {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+  height: 14rem ;
+  background-color: $bg-secondary;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: $text-color;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  .quote {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+  }
+
+  .visitors-count {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .typing-text {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .easter-egg-button {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    background-color: $primary-color;
+    color: $bg-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      //background-color: lighten($primary-color, 10%);
+      transform: scale(1.05);
+    }
+  }
+
+  .easter-egg {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: $primary-color;
+  }
+}
