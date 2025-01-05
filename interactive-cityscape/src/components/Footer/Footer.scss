@@ -1,11 +1,8 @@
 @use '../../style-variables/variables.scss' as *;
 
 .footer {
-  padding-left: 5rem;
-  padding-right: 5rem;
-  padding-bottom: 2rem;
-  padding-top: 3rem;
-  height: 14rem ;
+  padding: 1rem 2rem;
+  height: 10rem ;
   background-color: $bg-secondary;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -13,10 +10,12 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin-top: 3rem;
 
   .quote {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
     color: $primary-color;
   }
 
@@ -47,9 +46,7 @@
     }
   }
 
-  .easter-egg {
-    font-size: 1.5rem;
-    margin-top: 1rem;
+  .orange-text {
     color: $primary-color;
   }
 }

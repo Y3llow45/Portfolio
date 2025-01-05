@@ -9,19 +9,17 @@ const Footer = () => {
   const fullText = "// Thanks for visiting! Keep building cool stuff!";
 
   useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setTypingText((prev) => prev + fullText[index]);
-      index++;
-      if (index === fullText.length) {
-        clearInterval(interval);
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (!isIntersecting) {
+    if (isIntersecting) {
+      let index = -1;
+      const interval = setInterval(() => {
+        setTypingText((prev) => prev + fullText[index]);
+        index++;
+        if (index >= fullText.length-1) {
+          clearInterval(interval);
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    } else {
       setTypingText('');
     }
   }, [isIntersecting]);
@@ -34,11 +32,8 @@ const Footer = () => {
         animate={isIntersecting ? { opacity: 1 } : {}}
         transition={{ duration: 1 }}
       >
-        "Talk is cheap. Show me the code" - Linus Torvalds
+        "Talk is cheap. Show me the code." - Linus Torvalds
       </motion.div>
-      <div className="visitors-count">
-        Visitors so far: 5,432
-      </div>
       <motion.div
         className="typing-text"
         initial={{ opacity: 0 }}
@@ -47,6 +42,9 @@ const Footer = () => {
       >
         {typingText}
       </motion.div>
+      <div className="visitors-count">
+        Build with ❤ by <a className='orange-text' href='https://github.com/Y3llow45'>Y3llow45</a>
+      </div>
     </footer>
   );
 };
