@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import './Projects.scss';
 import Footer from '../Footer/Footer';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const projectsData = [
   { id: 1, title: 'Learn Electronics', description: 'Website about electrical components and how circuits work. You can learn or teach others by making lessons.',
@@ -68,8 +69,10 @@ const imgUrls: { [key: string]: string } = {
 }
 
 const Projects = () => {
+  const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
+
   return (
-    <section className="projects">
+    <section className="projects" ref={setRef}>
       <h2>My top 12 projects (34 total)</h2>
       <div className="projects-grid">
         {projectsData.map((project, index) => (
@@ -77,7 +80,7 @@ const Projects = () => {
             key={project.id}
             className="project-card"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <h3>{project.title}</h3>

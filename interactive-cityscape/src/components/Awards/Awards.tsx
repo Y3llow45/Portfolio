@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import './Awards.scss';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const awardsData = [
   {
@@ -23,8 +24,10 @@ const awardsData = [
 ];
 
 const Awards = () => {
+  const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
+
   return (
-    <section className="awards">
+    <section className="awards" ref={setRef}>
       <h2>Awards</h2>
       <div className="awards-list">
         {awardsData.map((award, index) => (
@@ -32,7 +35,7 @@ const Awards = () => {
             key={index}
             className="award-item"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <div style={{ display: 'flex', justifyContent: 'center'}}>

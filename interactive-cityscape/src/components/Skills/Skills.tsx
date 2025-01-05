@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import './Skills.scss';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const skillsData = {
   frontend: ['React', 'Angular', 'CSS/Sass', 'JavaScript', 'TypeScript', 'HTML5', 'Framer Motion', 'Material-UI', 'GraphQL'],
@@ -28,14 +29,16 @@ const SkillItem: React.FC<SkillItemProps> = ({ skill, index }) => {
 };
 
 const Skills = () => {
+  const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
+
   return (
-    <section className="skills">
+    <section className="skills" ref={setRef}>
       <h2 className='skills-h2'>My Skills</h2>
       <div className="skills-container">
         <motion.div
           className="skill-category backend"
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: -50, opacity: 0 }}
+          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
           <h3>Front-end</h3>
@@ -47,8 +50,8 @@ const Skills = () => {
         </motion.div>
         <motion.div
           className="skill-category backend"
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: 50, opacity: 0 }}
+          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
           <h3>Back-end</h3>
@@ -60,8 +63,8 @@ const Skills = () => {
         </motion.div>
         <motion.div
           className="skill-category backend"
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: -50, opacity: 0 }}
+          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
           <h3>Databases</h3>
@@ -73,8 +76,8 @@ const Skills = () => {
         </motion.div>
         <motion.div
           className="skill-category backend"
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: 50, opacity: 0 }}
+          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
           <h3>Devops</h3>
@@ -86,8 +89,8 @@ const Skills = () => {
         </motion.div>
         <motion.div
           className="skill-category backend"
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: -50, opacity: 0 }}
+          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
           <h3>Testing</h3>
