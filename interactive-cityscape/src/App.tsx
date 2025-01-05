@@ -1,5 +1,6 @@
 import './App.scss'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import About from './components/About/About'
 import Skills from './components/Skills/Skills'
 import Projects from './components/Projects/Projects'
@@ -8,6 +9,8 @@ import Header from './components/Header/Header'
 import Awards from './components/Awards/Awards'
 
 function App() {
+  const [language, setLanguage] = useState('eng');
+
   return (
     <>
       <BackgroundAnimation />
@@ -18,18 +21,18 @@ function App() {
         transition={{ duration: 1 }}
       >
         <section>
-          <Header />
+          <Header language={language} setLanguage={setLanguage} />
         </section>
         <section>
-          <About />
+          <About language={language} />
         </section>
         <section>
-          <Awards />
+          <Awards language={language} />
         </section>
         <section>
-          <Skills />
+          <Skills language={language} />
         </section>
-        <Projects />
+        <Projects language={language} />
       </motion.div>
     </>
   )

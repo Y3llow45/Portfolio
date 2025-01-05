@@ -2,6 +2,10 @@ import { motion } from 'framer-motion';
 import './Skills.scss';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
+interface SkillsProps {
+  language: string;
+}
+
 const skillsData = {
   frontend: ['React', 'Angular', 'CSS/Sass', 'JavaScript', 'TypeScript', 'HTML5', 'Framer Motion', 'Material-UI', 'GraphQL'],
   backend: ['Node.js', 'Express', 'Python', 'Django', 'Flask', 'Go', 'RabbitMQ', 'C#', '.NET', 'PHP', 'C++', 'IoT'],
@@ -28,12 +32,12 @@ const SkillItem: React.FC<SkillItemProps> = ({ skill, index }) => {
   );
 };
 
-const Skills = () => {
+const Skills: React.FC<SkillsProps> = ({ language }) => {
   const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
 
   return (
     <section className="skills" ref={setRef}>
-      <h2 className='skills-h2'>My Skills</h2>
+      <h2 className='skills-h2'>{language === 'eng' && 'My Skills'}{language === 'deu' && 'Meine Fähigkeiten'}{language === 'spa' && 'Mis Habilidades'}</h2>
       <div className="skills-container">
         <motion.div
           className="skill-category backend"
@@ -41,7 +45,7 @@ const Skills = () => {
           animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h3>Front-end</h3>
+          <h3>{language === 'eng' && 'Front-end'}{language === 'deu' && 'Front-end'}{language === 'spa' && 'Front-end'}</h3>
           <ul>
             {skillsData.frontend.map((skill, index) => (
               <SkillItem key={skill} skill={skill} index={index} />
@@ -54,7 +58,7 @@ const Skills = () => {
           animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h3>Back-end</h3>
+          <h3>{language === 'eng' && 'Back-end'}{language === 'deu' && 'Back-end'}{language === 'spa' && 'Back-end'}</h3>
           <ul>
             {skillsData.backend.map((skill, index) => (
               <SkillItem key={skill} skill={skill} index={index} />
@@ -67,7 +71,7 @@ const Skills = () => {
           animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h3>Databases</h3>
+          <h3>{language === 'eng' && 'Databases'}{language === 'deu' && 'Datenbanken'}{language === 'spa' && 'Bases de datos'}</h3>
           <ul>
             {skillsData.databases.map((skill, index) => (
               <SkillItem key={skill} skill={skill} index={index} />
@@ -80,7 +84,7 @@ const Skills = () => {
           animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h3>Devops</h3>
+          <h3>{language === 'eng' && 'Devops'}{language === 'deu' && 'Devops'}{language === 'spa' && 'Devops'}</h3>
           <ul>
             {skillsData.devops.map((skill, index) => (
               <SkillItem key={skill} skill={skill} index={index} />
@@ -93,7 +97,7 @@ const Skills = () => {
           animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h3>Testing</h3>
+          <h3>{language === 'eng' && 'Testing'}{language === 'deu' && 'Testen'}{language === 'spa' && 'Pruebas'}</h3>
           <ul>
             {skillsData.testing.map((skill, index) => (
               <SkillItem key={skill} skill={skill} index={index} />

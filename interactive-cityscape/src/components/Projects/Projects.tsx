@@ -2,6 +2,10 @@ import { motion } from 'framer-motion';
 import './Projects.scss';
 import Footer from '../Footer/Footer';
 
+interface ProjectsProps {
+  language: string;
+}
+
 const projectsData = [
   { id: 1, title: 'Learn Electronics', description: 'Website about electrical components and how circuits work. You can learn or teach others by making lessons.',
     technologies: ['HTML', 'CSS', 'React', 'JavaScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'MongoDB', 'Mongoose'],
@@ -67,10 +71,10 @@ const imgUrls: { [key: string]: string } = {
   'JWT': '/images/jwt.svg',
 }
 
-const Projects = () => {
+const Projects: React.FC<ProjectsProps> = ({ language }) => {
   return (
     <section className="projects">
-      <h2>My top 12 projects (34 total)</h2>
+      <h2>{language === 'eng' && 'My top 12 projects (34 total)'}{language === 'deu' && 'Meine Top 12 Projekte (insgesamt 34)'}{language === 'spa' && 'Mis 12 mejores proyectos (34 en total)'}</h2>
       <div className="projects-grid">
         {projectsData.map((project, index) => (
           <motion.div
@@ -91,12 +95,12 @@ const Projects = () => {
             ) : null}
             <br></br>
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-button">
-              View on GitHub
+              {language === 'eng' && 'View on GitHub'}{language === 'deu' && 'Auf GitHub ansehen'}{language === 'spa' && 'Ver en GitHub'}
             </a>
           </motion.div>
         ))}
       </div>
-      <Footer />
+      <Footer language={language} />
     </section>
   );
 };
