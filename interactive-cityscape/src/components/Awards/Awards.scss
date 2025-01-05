@@ -41,6 +41,11 @@
       margin-top: 1rem;
     }
 
+    .result-link {
+      cursor: pointer;
+      cursor: url('/images/3p.png'), pointer;
+    }
+
     a {
       display: inline-block;
       margin-top: 0.5rem;

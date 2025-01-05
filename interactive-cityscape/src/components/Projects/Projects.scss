@@ -51,6 +51,8 @@
       font-weight: 700;
       text-decoration: none;
       transition: background-color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      cursor: url('/images/3p.png'), pointer;
 
       &:hover {
         transform: scale(1.05);

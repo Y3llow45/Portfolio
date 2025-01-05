@@ -23,6 +23,8 @@
   background-color: #FFFFFF !important;
   margin-left: 0.5rem;
   border: none;
+  cursor: pointer;
+  cursor: url('/images/3p.png'), pointer;
   transition: background-color 0.2s ease;
 }
 
