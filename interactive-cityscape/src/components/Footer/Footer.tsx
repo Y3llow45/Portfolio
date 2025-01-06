@@ -3,18 +3,26 @@ import { motion } from 'framer-motion';
 import './Footer.scss';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
-const Footer = () => {
+interface FooterProps {
+  language: string;
+}
+
+const Footer: React.FC<FooterProps> = ({ language }) => {
   const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
   const [typingText, setTypingText] = useState('');
-  const fullText = "// Thanks for visiting! Keep building cool stuff!";
+  const fullText: { [key in 'eng' | 'deu' | 'spa']: string } = {
+    eng: "// Thanks for visiting! Keep building cool stuff!",
+    deu: "// Danke für deinen Besuch! Baue weiterhin coole Sachen!",
+    spa: "// Gracias por visitar! Sigue construyendo cosas geniales!"
+  };
 
   useEffect(() => {
     if (isIntersecting) {
       let index = -1;
       const interval = setInterval(() => {
-        setTypingText((prev) => prev + fullText[index]);
+        setTypingText((prev) => prev + fullText[language as 'eng' | 'deu' | 'spa'][index]);
         index++;
-        if (index >= fullText.length-1) {
+        if (index >= fullText[language as 'eng' | 'deu' | 'spa'].length-1) {
           clearInterval(interval);
         }
       }, 100);
@@ -22,7 +30,7 @@ const Footer = () => {
     } else {
       setTypingText('');
     }
-  }, [isIntersecting]);
+  }, [isIntersecting, language]);
 
   return (
     <footer className="footer" ref={setRef}>
@@ -32,7 +40,9 @@ const Footer = () => {
         animate={isIntersecting ? { opacity: 1 } : {}}
         transition={{ duration: 1 }}
       >
-        "Talk is cheap. Show me the code." - Linus Torvalds
+        {language === 'eng' && '"Talk is cheap. Show me the code." - Linus Torvalds'}
+        {language === 'deu' && '"Reden ist billig. Zeig mir den Code." - Linus Torvalds'}
+        {language === 'spa' && '"Hablar es barato. Muéstrame el código." - Linus Torvalds'}
       </motion.div>
       <motion.div
         className="typing-text"
@@ -43,7 +53,10 @@ const Footer = () => {
         {typingText}
       </motion.div>
       <div className="visitors-count">
-        Build with ❤ by <a className='orange-text' href='https://github.com/Y3llow45'>Y3llow45</a>
+        {language === 'eng' && 'Build with ❤ by '}
+        {language === 'deu' && 'Erstellt mit ❤ von '}
+        {language === 'spa' && 'Construido con ❤ por '}
+        <a className='orange-text' href='https://github.com/Y3llow45'>Y3llow45</a>
       </div>
     </footer>
   );

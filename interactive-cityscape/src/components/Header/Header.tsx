@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import './Header.scss';
 
 interface HeaderProps {
-  language: string;
-  setLanguage: (lang: string) => void;
+  language: 'eng' | 'deu' | 'spa';
+  setLanguage: React.Dispatch<React.SetStateAction<'eng' | 'deu' | 'spa'>>;
 }
 
 const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
-  const changeLanguage = (lang: string) => {
+  const changeLanguage = (lang: 'eng' | 'deu' | 'spa') => {
     setLanguage(lang);
   };
 

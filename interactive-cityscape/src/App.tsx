@@ -9,7 +9,7 @@ import Header from './components/Header/Header'
 import Awards from './components/Awards/Awards'
 
 function App() {
-  const [language, setLanguage] = useState('eng');
+  const [language, setLanguage] = useState<'eng' | 'deu' | 'spa'>('eng');
 
   return (
     <>
