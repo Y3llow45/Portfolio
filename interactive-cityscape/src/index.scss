@@ -32,3 +32,9 @@ body {
   scrollbar-width: thin;
   scrollbar-color: $primary-color $bg-secondary;
 }
+
+@supports (-moz-appearance: none) {
+  .scroller {
+    scroll-snap-type: none;
+  }
+}

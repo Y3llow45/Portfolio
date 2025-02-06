@@ -9,8 +9,12 @@
   color: $text-color;
   text-align: center;
   position: relative;
-  overflow: hidden;
   margin-top: 3rem;
+
+  .quote, .typing-text {
+    position: relative;
+    height: auto;
+  }
 
   .quote {
     font-size: 1.5rem;
@@ -28,21 +32,6 @@
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-family: 'Courier New', Courier, monospace;
-  }
-
-  .easter-egg-button {
-    position: absolute;
-    padding: 0.5rem 1rem;
-    background-color: $primary-color;
-    color: $bg-color;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   }
 
   .orange-text {
