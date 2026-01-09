@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Analytics } from "@vercel/analytics/react"
 import './Header.scss';
 
 interface HeaderProps {
@@ -13,6 +14,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
 
   return (
     <section className="header">
+        <Analytics />
       <div className="language-buttons">
         <button onClick={() => changeLanguage('eng')}>ENG</button>
         <button onClick={() => changeLanguage('deu')}>DEU</button>
