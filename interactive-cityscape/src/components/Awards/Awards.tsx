@@ -2,6 +2,19 @@ import { motion } from 'framer-motion';
 import './Awards.scss';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
+const trackEvent = (name: string, params = {}) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', name, params);
+  }
+};
+
+const track = () => {
+    trackEvent('buy_click', {
+        event_category: 'engagement',
+        event_label: 'awards_button',
+    });
+}
+
 interface AwardsProps {
   language: 'eng' | 'deu' | 'spa';
 }
@@ -59,7 +72,7 @@ const Awards: React.FC<AwardsProps> = ({ language }) => {
                 <img src="/images/laureate.png" alt="Laureate" className='award-img' />}
               <p>{award.title[language]} ({award.year})</p>
             </div>
-            <a href={award.link} target="_blank" rel="noopener noreferrer">Results</a>
+            <a href={award.link} target="_blank" rel="noopener noreferrer" onClick={() => track()}>Results</a>
           </motion.div>
         ))}
       </div>

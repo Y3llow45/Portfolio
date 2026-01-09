@@ -9,8 +9,22 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ language }) => {
   const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
 
+    const trackEvent = (name: string, params = {}) => {
+        if (typeof window !== 'undefined' && window.gtag) {
+            window.gtag('event', name, params);
+        }
+    };
+
+    const track = () => {
+        trackEvent('buy_click', {
+            event_category: 'engagement',
+            event_label: 'about_button',
+        });
+    }
+
   const copy = () => {
     navigator.clipboard.writeText('hristovborislav45@gmail.com');
+    track();
   }
 
   return (

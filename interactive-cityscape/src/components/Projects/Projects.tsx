@@ -119,6 +119,19 @@ const imgUrls: { [key: string]: string } = {
   'JWT': '/images/jwt.svg',
 }
 
+const trackEvent = (name: string, params = {}) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', name, params);
+  }
+};
+
+const track = () => {
+    trackEvent('buy_click', {
+        event_category: 'engagement',
+        event_label: 'project_button',
+    });
+}
+
 const Projects: React.FC<ProjectsProps> = ({ language }: { language: 'eng' | 'deu' | 'spa' }) => {
   return (
     <section className="projects">
@@ -142,7 +155,7 @@ const Projects: React.FC<ProjectsProps> = ({ language }: { language: 'eng' | 'de
               </>
             ) : null}
             <br></br>
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-button">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-button" onClick={() => track()}>
               {language === 'eng' && 'View on GitHub'}{language === 'deu' && 'Auf GitHub ansehen'}{language === 'spa' && 'Ver en GitHub'}
             </a>
           </motion.div>
