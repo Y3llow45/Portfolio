@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import './About.scss'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
-import { trackEvent } from '../../ga'
 
 interface AboutProps {
   language: string
@@ -13,10 +12,9 @@ const About: React.FC<AboutProps> = ({ language }) => {
   const copy = () => {
     navigator.clipboard.writeText('hristovborislav45@gmail.com')
 
-    trackEvent('copy_email', {
-      location: 'about_section',
-      method: 'button',
-    })
+    if (import.meta.env.PROD) {
+        navigator.sendBeacon('/api/views?event=copy_email');
+    }
   }
 
   return (

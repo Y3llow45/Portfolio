@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import './Projects.scss';
 import Footer from '../Footer/Footer';
-import { trackEvent } from '../../ga';
 
 interface ProjectsProps {
   language: 'eng' | 'deu' | 'spa';
@@ -121,6 +120,23 @@ const imgUrls: { [key: string]: string } = {
 };
 
 const Projects: React.FC<ProjectsProps> = ({ language }: { language: 'eng' | 'deu' | 'spa' }) => {
+    const trackEvent = (name: string, params: Record<string, any>) => {
+      if (!import.meta.env.PROD) return;
+
+      const query = new URLSearchParams({
+        event: name,
+        ...Object.fromEntries(Object.entries(params).map(([k, v]) => [k, String(v)])),
+      }).toString();
+
+      const url = `/api/views?${query}`;
+
+      if (navigator.sendBeacon?.(url)) {
+        return;
+      }
+      //fallback
+      fetch(url, { keepalive: true, method: 'GET' }).catch(() => {});
+    };
+
   return (
     <section className="projects">
       <h2>{language === 'eng' && 'My top 12 projects (34 total)'}{language === 'deu' && 'Meine Top 12 Projekte (insgesamt 34)'}{language === 'spa' && 'Mis 12 mejores proyectos (34 en total)'}</h2>
@@ -143,14 +159,22 @@ const Projects: React.FC<ProjectsProps> = ({ language }: { language: 'eng' | 'de
               </>
             ) : null}
             <br></br>
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-button" 
-            onClick={() =>
-                trackEvent('click_project_github', {
-                    section: 'projects',
-                    project_id: project.id,
-                    project_title: project.title,
-                })}>
-              {language === 'eng' && 'View on GitHub'}{language === 'deu' && 'Auf GitHub ansehen'}{language === 'spa' && 'Ver en GitHub'}
+            <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-button"
+                onClick={() =>
+                    trackEvent('click_project_github', {
+                        section: 'projects',
+                        project_id: project.id,
+                        project_title: project.title,
+                    })
+                }
+            >
+                {language === 'eng' && 'View on GitHub'}
+                {language === 'deu' && 'Auf GitHub ansehen'}
+                {language === 'spa' && 'Ver en GitHub'}
             </a>
           </motion.div>
         ))}

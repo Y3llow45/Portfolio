@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import './Awards.scss';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import { trackEvent } from '../../ga';
 
 interface AwardsProps {
   language: 'eng' | 'deu' | 'spa';
@@ -43,6 +42,23 @@ const awardsData = [
 const Awards: React.FC<AwardsProps> = ({ language }) => {
     const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
 
+    const trackEvent = (name: string, params: Record<string, any>) => {
+      if (!import.meta.env.PROD) return;
+
+      const query = new URLSearchParams({
+        event: name,
+        ...Object.fromEntries(Object.entries(params).map(([k, v]) => [k, String(v)])),
+      }).toString();
+
+      const url = `/api/views?${query}`;
+
+      if (navigator.sendBeacon?.(url)) {
+        return;
+      }
+      //fallback
+      fetch(url, { keepalive: true, method: 'GET' }).catch(() => {});
+    };
+
     return (
         <section className="awards" ref={setRef}>
           <h2>{language === 'eng' && 'Awards'}{language === 'deu' && 'Auszeichnungen'}{language === 'spa' && 'Premios'}</h2>
@@ -60,13 +76,20 @@ const Awards: React.FC<AwardsProps> = ({ language }) => {
                     <img src="/images/laureate.png" alt="Laureate" className='award-img' />}
                   <p>{award.title[language]} ({award.year})</p>
                 </div>
-                <a href={award.link} target="_blank" rel="noopener noreferrer" 
-                onClick={() =>
-                trackEvent('click_award_link', {
-                  section: 'awards',
-                  year: award.year,
-                  type: award.award ? 'first_place' : 'laureate'
-                })}>Results</a>
+                <a
+                  href={award.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent('click_award_link', {
+                      section: 'awards',
+                      year: award.year,
+                      type: award.award ? 'first_place' : 'laureate',
+                    })
+                  }
+                >
+                  Results
+                </a>
               </motion.div>
             ))}
           </div>
