@@ -13,7 +13,7 @@ export default async function handler(req: Request) {
     try{
     const url = new URL(req.url);
     const method = req.method;
-    const isBadge = url.searchParams.has('badge');
+    const badgeType = url.searchParams.get('badge');
     const shouldCountView = url.searchParams.get('count') === '1';
     const eventName = url.searchParams.get('event');
 
@@ -47,14 +47,18 @@ export default async function handler(req: Request) {
       events[key] = Number(value).toLocaleString();
     }
 
-    if (isBadge) {
-      return Response.json({
-        schemaVersion: 1,
-        label: 'page views',
-        message: pageViews.toLocaleString(),
-        color: 'brightgreen',
-        cacheSeconds: 300,
-      });
+    if (badgeType && allowedEvents.has(badgeType)) {
+        const value = badgeType === 'views'
+            ? pageViews
+            : Number(eventsHash?.[badgeType] || 0);
+
+        return Response.json({
+          schemaVersion: 1,
+          label: badgeType.replace(/_/g, ' '),
+          message: value.toLocaleString(),
+          color: 'brightgreen',
+          cacheSeconds: 300,
+        });
     }
 
     return Response.json({
