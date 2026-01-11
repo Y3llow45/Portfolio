@@ -10,35 +10,43 @@ const redis = new Redis({
 });
 
 export default async function handler(req: Request) {
-  if (req.method !== 'GET') {
-    return new Response('Method Not Allowed', { status: 405 });
-  }
-
   const url = new URL(req.url);
   const isBadge = url.searchParams.has('badge');
-  const hasEvent = url.searchParams.has('event');
-  
-  if (hasEvent) {
-    const eventName = url.searchParams.get('event');
-    if (eventName) {
-      await redis.incr(`event:${eventName}`);
-    }
+  const eventName = url.searchParams.get('event');
+
+  if (eventName) {
+    await redis.hincrby('events', eventName, 1);
   }
-  
-  const count = await redis.incr('page_views');
+
+  let pageViews = 0;
+  if (req.method === 'GET') {
+    pageViews = await redis.incr('page_views');
+  } else {
+    pageViews = Number(await redis.get('page_views') || '0');
+  }
+
+  if (req.method === 'POST') {
+    return new Response(null, { status: 204 });
+  }
+
+  const eventsHash = await redis.hgetall('events');
+  const events: Record<string, string> = {};
+  for (const [key, value] of Object.entries(eventsHash || {})) {
+    events[key] = Number(value).toLocaleString();
+  }
 
   if (isBadge) {
-    
     return Response.json({
       schemaVersion: 1,
       label: 'page views',
-      message: count.toLocaleString(),
+      message: pageViews.toLocaleString(),
       color: 'brightgreen',
-      cacheSeconds: 300,  
+      cacheSeconds: 300,
     });
   }
 
   return Response.json({
-    views: count.toLocaleString(),
+    views: pageViews.toLocaleString(),
+    ...events,
   });
 }
