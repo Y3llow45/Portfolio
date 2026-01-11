@@ -10,43 +10,61 @@ const redis = new Redis({
 });
 
 export default async function handler(req: Request) {
-  const url = new URL(req.url);
-  const isBadge = url.searchParams.has('badge');
-  const eventName = url.searchParams.get('event');
+    try{
+    const url = new URL(req.url);
+    const method = req.method;
+    const isBadge = url.searchParams.has('badge');
+    const shouldCountView = url.searchParams.get('count') === '1';
+    const eventName = url.searchParams.get('event');
 
-  if (eventName) {
-    await redis.hincrby('events', eventName, 1);
-  }
+    const allowedEvents = new Set([
+      'copy_email',
+      'click_project_github',
+      'click_award_link',
+      'views'
+    ]);
 
-  let pageViews = 0;
-  if (req.method === 'GET') {
-    pageViews = await redis.incr('page_views');
-  } else {
-    pageViews = Number(await redis.get('page_views') || '0');
-  }
+    if (eventName && allowedEvents.has(eventName)) {
+      await redis.hincrby('events', eventName, 1);
+    }
 
-  if (req.method === 'POST') {
-    return new Response(null, { status: 204 });
-  }
+    let pageViews = 0;
 
-  const eventsHash = await redis.hgetall('events');
-  const events: Record<string, string> = {};
-  for (const [key, value] of Object.entries(eventsHash || {})) {
-    events[key] = Number(value).toLocaleString();
-  }
+    if (method === 'GET' && shouldCountView) {
+      pageViews = await redis.incr('page_views');
+    } else {
+      pageViews = Number(await redis.get('page_views') || '0');
+    }
 
-  if (isBadge) {
+    if (method === 'POST') {
+      return new Response(null, { status: 204 });
+    }
+
+    const eventsHash = await redis.hgetall('events');
+    const events: Record<string, string> = {};
+
+    for (const [key, value] of Object.entries(eventsHash || {})) {
+      events[key] = Number(value).toLocaleString();
+    }
+
+    if (isBadge) {
+      return Response.json({
+        schemaVersion: 1,
+        label: 'page views',
+        message: pageViews.toLocaleString(),
+        color: 'brightgreen',
+        cacheSeconds: 300,
+      });
+    }
+
     return Response.json({
-      schemaVersion: 1,
-      label: 'page views',
-      message: pageViews.toLocaleString(),
-      color: 'brightgreen',
-      cacheSeconds: 300,
+      views: pageViews.toLocaleString(),
+      ...events,
     });
-  }
-
-  return Response.json({
-    views: pageViews.toLocaleString(),
-    ...events,
-  });
+    } catch (err) {
+        return new Response(
+            JSON.stringify({ error: 'internal_error' }),
+            { status: 500 }
+        );
+    }
 }

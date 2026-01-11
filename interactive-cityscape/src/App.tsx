@@ -1,6 +1,6 @@
 import './App.scss'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import About from './components/About/About'
 import Skills from './components/Skills/Skills'
 import Projects from './components/Projects/Projects'
@@ -10,6 +10,12 @@ import Awards from './components/Awards/Awards'
 
 function App() {
   const [language, setLanguage] = useState<'eng' | 'deu' | 'spa'>('eng')
+
+  useEffect(() => {
+    if (import.meta.env.PROD) {
+      fetch('/api/views?count=1');
+    }
+  }, []);
 
   return (
     <>
