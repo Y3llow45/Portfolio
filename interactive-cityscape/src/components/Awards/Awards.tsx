@@ -1,19 +1,7 @@
 import { motion } from 'framer-motion';
 import './Awards.scss';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-
-const trackEvent = (name: string, params = {}) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', name, params);
-  }
-};
-
-const track = () => {
-    trackEvent('buy_click', {
-        event_category: 'engagement',
-        event_label: 'awards_button',
-    });
-}
+import { trackEvent } from '../../ga';
 
 interface AwardsProps {
   language: 'eng' | 'deu' | 'spa';
@@ -53,31 +41,37 @@ const awardsData = [
 ];
 
 const Awards: React.FC<AwardsProps> = ({ language }) => {
-  const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
+    const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
 
-  return (
-    <section className="awards" ref={setRef}>
-      <h2>{language === 'eng' && 'Awards'}{language === 'deu' && 'Auszeichnungen'}{language === 'spa' && 'Premios'}</h2>
-      <div className="awards-list">
-        {awardsData.map((award, index) => (
-          <motion.div
-            key={index}
-            className="award-item"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              {award.award ? <img src="/images/first.png" alt="First" className='award-img' /> : 
-                <img src="/images/laureate.png" alt="Laureate" className='award-img' />}
-              <p>{award.title[language]} ({award.year})</p>
-            </div>
-            <a href={award.link} target="_blank" rel="noopener noreferrer" onClick={() => track()}>Results</a>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
+    return (
+        <section className="awards" ref={setRef}>
+          <h2>{language === 'eng' && 'Awards'}{language === 'deu' && 'Auszeichnungen'}{language === 'spa' && 'Premios'}</h2>
+          <div className="awards-list">
+            {awardsData.map((award, index) => (
+              <motion.div
+                key={index}
+                className="award-item"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  {award.award ? <img src="/images/first.png" alt="First" className='award-img' /> : 
+                    <img src="/images/laureate.png" alt="Laureate" className='award-img' />}
+                  <p>{award.title[language]} ({award.year})</p>
+                </div>
+                <a href={award.link} target="_blank" rel="noopener noreferrer" 
+                onClick={() =>
+                trackEvent('click_award_link', {
+                  section: 'awards',
+                  year: award.year,
+                  type: award.award ? 'first_place' : 'laureate'
+                })}>Results</a>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+    );
 };
 
 export default Awards;

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import './Projects.scss';
 import Footer from '../Footer/Footer';
+import { trackEvent } from '../../ga';
 
 interface ProjectsProps {
   language: 'eng' | 'deu' | 'spa';
@@ -117,20 +118,7 @@ const imgUrls: { [key: string]: string } = {
   'Vite': '/images/vite.png',
   'PostgreSQL': '/images/postgresql.svg',
   'JWT': '/images/jwt.svg',
-}
-
-const trackEvent = (name: string, params = {}) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', name, params);
-  }
 };
-
-const track = () => {
-    trackEvent('buy_click', {
-        event_category: 'engagement',
-        event_label: 'project_button',
-    });
-}
 
 const Projects: React.FC<ProjectsProps> = ({ language }: { language: 'eng' | 'deu' | 'spa' }) => {
   return (
@@ -155,7 +143,13 @@ const Projects: React.FC<ProjectsProps> = ({ language }: { language: 'eng' | 'de
               </>
             ) : null}
             <br></br>
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-button" onClick={() => track()}>
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="github-button" 
+            onClick={() =>
+                trackEvent('click_project_github', {
+                    section: 'projects',
+                    project_id: project.id,
+                    project_title: project.title,
+                })}>
               {language === 'eng' && 'View on GitHub'}{language === 'deu' && 'Auf GitHub ansehen'}{language === 'spa' && 'Ver en GitHub'}
             </a>
           </motion.div>
