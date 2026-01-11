@@ -1,14 +1,18 @@
-import { StrictMode, useEffect } from 'react'
+import { StrictMode, useEffect, useRef } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.scss'
 import App from './App'
-import { loadGtag, pageview } from './ga'
+import { pageview } from './ga'
 
 function Root() {
+  const hasTrackedInitial = useRef(false);
+
   useEffect(() => {
-    loadGtag()
-    pageview(window.location.pathname)
-  }, [])
+    if (!hasTrackedInitial.current) {
+      pageview(window.location.pathname + window.location.search);
+      hasTrackedInitial.current = true;
+    }
+  }, []);
 
   return <App />
 }
