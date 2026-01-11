@@ -53,6 +53,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
         {typingText}
       </motion.div>
       <div className="visitors-count">
+        <p className='small-text'>This site uses server-side analytics for anonymous visit/button counts — no cookies or personal data stored</p>
         {language === 'eng' && 'Build with ❤ by '}
         {language === 'deu' && 'Erstellt mit ❤ von '}
         {language === 'spa' && 'Construido con ❤ por '}
