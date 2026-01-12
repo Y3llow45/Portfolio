@@ -6,5 +6,5 @@
 
  Link: https://portfolio-y3llow46s-projects.vercel.app/
 
-## This site uses server-side analytics for anonymous visit/button counts — no cookies or personal data stored
-## ⚠️ DO NOT use my tracking service for large-scale or production use — there can be serious legal consequences. I’m not responsible if this gets you into legal issues.
+### This site uses server-side analytics for anonymous visit/button counts — no cookies or personal data stored
+### ⚠️ DO NOT use my tracking service for large-scale or production use — there can be serious legal consequences. I’m not responsible if this gets you into legal issues.
