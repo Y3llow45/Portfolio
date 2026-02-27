@@ -7,11 +7,40 @@ interface SkillsProps {
 }
 
 const skillsData = {
-  frontend: ['React', 'Angular', 'CSS/Sass', 'JavaScript', 'TypeScript', 'HTML5', 'Framer Motion', 'Material-UI', 'GraphQL'],
-  backend: ['Node.js', 'Express', 'Python', 'Django', 'Flask', 'Go', 'RabbitMQ', 'C#', '.NET', 'PHP', 'C++', 'IoT'],
-  databases: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'Redis', 'Firebase', 'ORMs/ODMs'],
-  devops: ['Docker', 'Kubernetes', 'CI/CD principles', 'Github Actions'],
-  testing: ['Jest', 'Cypress', 'Selenium', 'Postman'],
+  backend: [
+    'Java', 'Spring Boot', 
+    'RESTful APIs', 'Microservices', 
+    'RabbitMQ', 'Kafka', 
+    'WebSockets', 'Python', 
+    'NodeJS'            
+  ],
+  frontend: [
+    'React',
+    'TypeScript',
+    'JavaScript',
+    'HTML5',
+    'CSS / Sass / Tailwind CSS',
+    'Next.js',   
+  ],
+  databases: [
+    'PostgreSQL',
+    'JPA / Hibernate',   
+    'Redis',
+    'MongoDB',
+  ],
+  devops: [
+    'Docker',
+    'Kubernetes',
+    'CI/CD / GitHub Actions',
+    'Git / GitHub',
+    'AWS / Vercel',
+  ],
+  testing: [
+    'JUnit',
+    'Jest',
+    'Selenium',
+    'Cypress',
+  ],
 };
 
 interface SkillItemProps {
@@ -41,19 +70,6 @@ const Skills: React.FC<SkillsProps> = ({ language }) => {
       <div className="skills-container">
         <motion.div
           className="skill-category backend"
-          initial={{ x: -50, opacity: 0 }}
-          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h3>{language === 'eng' && 'Front-end'}{language === 'deu' && 'Front-end'}{language === 'spa' && 'Front-end'}</h3>
-          <ul>
-            {skillsData.frontend.map((skill, index) => (
-              <SkillItem key={skill} skill={skill} index={index} />
-            ))}
-          </ul>
-        </motion.div>
-        <motion.div
-          className="skill-category backend"
           initial={{ x: 50, opacity: 0 }}
           animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
@@ -61,6 +77,19 @@ const Skills: React.FC<SkillsProps> = ({ language }) => {
           <h3>{language === 'eng' && 'Back-end'}{language === 'deu' && 'Back-end'}{language === 'spa' && 'Back-end'}</h3>
           <ul>
             {skillsData.backend.map((skill, index) => (
+              <SkillItem key={skill} skill={skill} index={index} />
+            ))}
+          </ul>
+        </motion.div>
+        <motion.div
+          className="skill-category backend"
+          initial={{ x: -50, opacity: 0 }}
+          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h3>{language === 'eng' && 'Front-end'}{language === 'deu' && 'Front-end'}{language === 'spa' && 'Front-end'}</h3>
+          <ul>
+            {skillsData.frontend.map((skill, index) => (
               <SkillItem key={skill} skill={skill} index={index} />
             ))}
           </ul>
