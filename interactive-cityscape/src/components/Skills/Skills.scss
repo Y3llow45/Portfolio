@@ -1,58 +1,6 @@
-@use '../../style-variables/variables.scss' as *;
-
-.skills {
-  .skills-container {
-    gap: 2rem;
-  }
-
-  .skill-category {
-    flex: 1;
-    min-width: 300px;
-    border-radius: 10px;
-    padding: 0px !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    h3 {
-      font-size: 1.8rem;
-      margin-bottom: 0px !important;
-      text-align: center;
-      color: $primary-color;
-    }
-
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      list-style-type: none;
-      padding: 0;
-    }
-  }
-
-  .skill-item {
-    background-color: $primary-color;
-    color: $bg-color;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-
-  .frontend .skill-item {
-    background-color: $primary-color;
-  }
-
-  .backend .skill-item {
-    background-color: $secondary-color;
-  }
-}
-
-.skills-h2 {
-  margin-bottom: 0.5rem;
-  margin-top: 0.1rem;
-}
+.skills-container { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; margin-top: 2rem; }
+.skill-category { text-align: left; padding: 1.35rem; border-radius: 15px; background: rgba(19,29,41,.88); border: 1px solid rgba(255,255,255,.1); }
+.skill-category h3 { margin: 0 0 1rem; color: #ffb86a; font-size: 1rem; }
+.skill-category ul { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0; }
+.skill-category li { background: rgba(255,255,255,.06); border-radius: 7px; padding: .42rem .65rem; color: #d5deea; font-size: .84rem; }
+@media (max-width: 650px) { .skills-container { grid-template-columns: 1fr; } }

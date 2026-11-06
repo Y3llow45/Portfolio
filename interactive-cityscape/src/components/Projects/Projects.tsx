@@ -1,191 +1,134 @@
-import { motion } from 'framer-motion';
-import './Projects.scss';
-import Footer from '../Footer/Footer';
+import './Projects.scss'
+import type { Language } from '../../App'
 
-interface ProjectsProps {
-  language: 'eng' | 'deu' | 'spa';
+type Copy = { eng: string; deu: string; spa: string }
+type Project = {
+  title: string
+  description: Copy
+  stack: string[]
+  github: string
+  image?: string
+  imageAlt?: string
 }
 
-const projectsData = [
-    { id: 1, title: 'Anomaly Detection Platform', description: {
-        eng: 'Platform for detecting anomalies in datasets.',
-        deu: 'Plattform zur Erkennung von Anomalien in Daten.',
-        spa: 'Plataforma para detectar anomalías en datos.'
+const projects: Project[] = [
+  {
+    title: 'Steganography',
+    description: {
+      eng: 'Desktop GUI and CLI that hide and recover messages in PNG images using a custom pixel-based algorithm.',
+      deu: 'Desktop-GUI und CLI zum Verstecken und Wiederherstellen von Nachrichten in PNG-Bildern mit einem eigenen Pixelalgorithmus.',
+      spa: 'Interfaz de escritorio y CLI para ocultar y recuperar mensajes en PNG mediante un algoritmo propio basado en píxeles.'
     },
-        technologies: ['Java', 'Spring Boot', 'Svelte', 'PostgreSQL'],
-        github: 'https://github.com/Y3llow45/Data-Quality-And-Anomaly-Detection-Platform'},
-    { id: 2, title: 'Chato', description: {
-        eng: 'Encrypted real-time chat app, built for secure communication with a focus on privacy and speed.',
-        deu: 'Verschlüsselte Echtzeit-Chat-App, entwickelt für sichere Kommunikation mit Fokus auf Datenschutz und Geschwindigkeit.',
-        spa: 'Aplicación de chat en tiempo real cifrada, construida para una comunicación segura con un enfoque en la privacidad y la velocidad.'
+    stack: ['Python', 'PySide6', 'Pillow'],
+    github: 'https://github.com/Y3llow45/Steganography',
+    image: 'https://user-images.githubusercontent.com/68009977/232536759-a29bddc8-5d54-42e0-a0e8-8c1b1c106d46.png',
+    imageAlt: 'Steganography desktop application'
+  },
+  {
+    title: 'LearnElectronics',
+    description: {
+      eng: 'Full-stack electronics learning platform with user roles, JWT authentication and a rich-text lesson editor.',
+      deu: 'Full-Stack-Lernplattform für Elektronik mit Benutzerrollen, JWT-Authentifizierung und Rich-Text-Lektionseditor.',
+      spa: 'Plataforma educativa de electrónica con roles, autenticación JWT y editor de lecciones de texto enriquecido.'
     },
-        technologies: ['Vite', 'HTML', 'CSS', 'React', 'JavaScript', 'TypeScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'PostgreSQL', 'RabbitMQ', 'Socket.io','Framermotion'],
-        github: 'https://github.com/Y3llow45/chat-app'},
-    { id: 3, title: 'CineVerse', description: {
-        eng: 'Website with authentication, authorization and role-based access control.',
-        deu: 'Website mit Authentifizierung, Autorisierung und rollenbasiertem Zugriffskontrolle.',
-        spa: 'Sitio web con autenticación, autorización y control de acceso basado en roles.'
+    stack: ['React', 'Express', 'MongoDB', 'Draft.js'],
+    github: 'https://github.com/Y3llow45/LearnElectronics',
+    image: 'https://github.com/Y3llow45/LearnElectronics/assets/68009977/3c2e09b5-6eff-42e3-b674-d2b656930a66',
+    imageAlt: 'LearnElectronics website'
+  },
+  {
+    title: 'Chato',
+    description: {
+      eng: 'Real-time chat with RSA-based message encryption, PostgreSQL, offline RabbitMQ queuing and Socket.IO.',
+      deu: 'Echtzeit-Chat mit RSA-basierter Nachrichtenverschlüsselung, PostgreSQL, RabbitMQ-Offline-Warteschlange und Socket.IO.',
+      spa: 'Chat en tiempo real con cifrado RSA, PostgreSQL, colas offline con RabbitMQ y Socket.IO.'
     },
-        technologies: ['Java', 'Spring Boot', 'PostgreSQL'],
-        github: 'https://github.com/Y3llow45/CineVerse'},
-    
-    { id: 4, title: 'Learn Electronics', description: {
-        eng: 'A web scraper that filters job listings from jobs.bg based on user preferences and displays the most common technologies required.',
-        deu: 'Ein Web-Scraper, der Stellenanzeigen von jobs.bg basierend auf den Benutzervorlieben filtert und die am häufigsten benötigten Technologien anzeigt.',
-        spa: 'Un raspador web que filtra las ofertas de trabajo de jobs.bg según las preferencias del usuario y muestra las tecnologías más comunes requeridas.'
+    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'RabbitMQ'],
+    github: 'https://github.com/Y3llow45/chat-app',
+    image: 'https://github.com/user-attachments/assets/a71e743b-23e7-4d88-83c3-0c8cf7409f94',
+    imageAlt: 'Chato database architecture diagram'
+  },
+  {
+    title: 'Data Quality & Anomaly Detection',
+    description: {
+      eng: 'Async CSV processing with dataset versions, column statistics and outlier detection, presented in a Svelte dashboard.',
+      deu: 'Asynchrone CSV-Verarbeitung mit Datensatzversionen, Spaltenstatistiken und Ausreißererkennung in einem Svelte-Dashboard.',
+      spa: 'Análisis asíncrono de CSV con versiones, estadísticas de columnas y detección de valores atípicos en Svelte.'
     },
-        technologies: ['HTML', 'CSS', 'React', 'JavaScript', 'Node.js', 'Nodemon', 'Express', 'JWT', 'MongoDB', 'Mongoose'],
-        github: 'https://github.com/Y3llow45/LearnElectronics'},
-    { id: 5, title: 'Steganography', description: {
-        eng: 'Desktop app for hiding secret messages in images using Steganography.',
-        deu: 'Desktop-App zum Verstecken geheimer Nachrichten in Bildern mit Steganographie.',
-        spa: 'Aplicación de escritorio para ocultar mensajes secretos en imágenes usando esteganografía.'
+    stack: ['Java', 'Spring Boot', 'Svelte', 'PostgreSQL'],
+    github: 'https://github.com/Y3llow45/Data-Quality-And-Anomaly-Detection-Platform',
+    image: 'https://github.com/user-attachments/assets/5d09de73-4d75-42aa-9d90-71869e693e41',
+    imageAlt: 'Data quality dashboard'
+  },
+  {
+    title: 'CineVerse',
+    description: {
+      eng: 'Spring Boot application featuring JWT authentication, TOTP 2FA, roles, uploads, audit logging and rate limiting.',
+      deu: 'Spring-Boot-Anwendung mit JWT-Anmeldung, TOTP-2FA, Rollen, Datei-Uploads, Audit-Logs und Rate-Limiting.',
+      spa: 'Aplicación Spring Boot con JWT, autenticación TOTP 2FA, roles, archivos, auditoría y limitación de solicitudes.'
     },
-        technologies: ['Python'],
-        github: 'https://github.com/Y3llow45/Steganography'},
-    { id: 6, title: 'Sixty-six game', description: {
-        eng: 'Multiplayer cards game using socket protocol.',
-        deu: 'Mehrspieler-Kartenspiel mit Socket-Protokoll.',
-        spa: 'Juego de cartas multijugador que utiliza protocolo socket.'
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'PostgreSQL'],
+    github: 'https://github.com/Y3llow45/CineVerse'
+  },
+  {
+    title: 'URL Shortener & Analytics',
+    description: {
+      eng: 'Shorten links, generate QR codes and track visits, with automated browser tests.',
+      deu: 'Links kürzen, QR-Codes generieren und Besucher messen, mit automatisierten Browser-Tests.',
+      spa: 'Acorta enlaces, genera códigos QR y analiza visitas con pruebas automatizadas del navegador.'
     },
-        technologies: ['HTML', 'CSS', 'React', 'JavaScript', 'Node.js', 'Express', 'Nodemon', 'Socket.io'],
-        github: 'https://github.com/Y3llow45/Sixty-six-game'},
-    { id: 7, title: 'URL shortener with analytics', description: {
-        eng: 'Website for shortening URLs, monitoring visitors, and generating QR codes.',
-        deu: 'Website zum Kürzen von URLs, Überwachen von Besuchern und Erstellen von QR-Codes.',
-        spa: 'Sitio web para acortar URLs, monitorear visitantes y generar códigos QR.'
-    },
-        technologies: ['HTML', 'CSS', 'React', 'JavaScript', 'TypeScript', 'Next.js', 'Prisma', 'Redux'],
-        github: 'https://github.com/Y3llow45/URL-shortener-with-analytics'},
-    { id: 8, title: 'Tic-tac-toe cheat', description: {
-        eng: 'Automated cheat for Google\'s tic-tac-toe game.',
-        deu: 'Automatischer Cheat für Googles Tic-Tac-Toe-Spiel.',
-        spa: 'Truco automatizado para el juego de tic-tac-toe de Google.'
-    },
-        technologies: ['Python', 'Selenium'],
-        github: 'https://github.com/Y3llow45/tic-tac-toe-cheat'},
-    { id: 9, title: 'Small clock arduino', description: {
-        eng: 'Small 4 digit 7 segment clock using time module and Arduino.',
-        deu: 'Kleine 4-stellige 7-Segment-Uhr mit Zeitmodul und Arduino.',
-        spa: 'Pequeño reloj de 4 dígitos y 7 segmentos usando módulo de tiempo y Arduino.'
-    },
-        technologies: ['Arduino'],
-        github: 'https://github.com/Y3llow45/small-clock-arduino'},
-    { id: 10, title: 'Discord bot', description: {
-        eng: 'Discord bot that greets users, solves Rubik\'s cubes and sudokus, sends bash commands to server and much more.',
-        deu: 'Discord-Bot, der Benutzer begrüßt, Rubik\'s Würfel und Sudokus löst, Bash-Befehle an den Server sendet und vieles mehr.',
-        spa: 'Bot de Discord que saluda a los usuarios, resuelve cubos de Rubik y sudokus, envía comandos bash al servidor y mucho más.'
-    },
-        technologies: ['Python'],
-        github: 'https://github.com/Y3llow45/discord-bots'},
-    { id: 11, title: 'DrawingBe', description: {
-        eng: 'Desktop app that draws cool things using turtle library.',
-        deu: 'Desktop-App, die coole Dinge mit der Turtle-Bibliothek zeichnet.',
-        spa: 'Aplicación de escritorio que dibuja cosas geniales usando la biblioteca de tortugas.'
-    },
-        technologies: ['Python'],
-        github: 'https://github.com/Y3llow45/DrawingBe'},
-    { id: 12, title: 'Scrape and process techs', description: {
-        eng: 'A web scraper that filters job listings from jobs.bg based on user preferences and displays the most common technologies required.',
-        deu: 'Ein Web-Scraper, der Stellenanzeigen von jobs.bg basierend auf den Benutzervorlieben filtert und die am häufigsten benötigten Technologien anzeigt.',
-        spa: 'Un raspador web que filtra las ofertas de trabajo de jobs.bg según las preferencias del usuario y muestra las tecnologías más comunes requeridas.'
-    },
-        technologies: ['Python', 'CSS'],
-        github: 'https://github.com/Y3llow45/scrape-and-process'}, 
-];
+    stack: ['Next.js', 'TypeScript', 'Prisma', 'Jest', 'Puppeteer'],
+    github: 'https://github.com/Y3llow45/URL-shortener-with-analytics',
+    image: 'https://github.com/user-attachments/assets/2928110d-08c7-4e04-8558-db7160ce03f0',
+    imageAlt: 'URL analytics dashboard'
+  }
+]
 
-const imgUrls: { [key: string]: string } = {
-    'Java': '/images/java.svg',
-    'Spring Boot': '/images/spring boot.svg',
-    'Svelte': '/images/svelte.svg',
-    'React': '/images/react.svg',
-    'Arduino': '/images/arduino.svg',
-    'CSS': '/images/css3.svg',
-    'Express': '/images/express.png',
-    'Framermotion': '/images/framermotion.png',
-    'JavaScript': '/images/javascript.svg',
-    'MongoDB': '/images/mongodb.svg',
-    'Mongoose': '/images/mongoose.png',
-    'Next.js': '/images/nextjs.svg',
-    'Node.js': '/images/node.js.png',
-    'Nodemon': '/images/nodemon.svg',
-    'Prisma': '/images/prisma.png',
-    'Python': '/images/python.svg',
-    'RabbitMQ': '/images/rabbitmq.svg',
-    'Redux': '/images/redux.svg',
-    'SaSS': '/images/sass.svg',
-    'Selenium': '/images/selenium.svg',
-    'Socket.io': '/images/socket.io.png',
-    'TypeScript': '/images/typescript.svg',
-    'HTML': '/images/html.svg',
-    'Vite': '/images/vite.png',
-    'PostgreSQL': '/images/postgresql.svg',
-    'JWT': '/images/jwt.svg',
-};
+const more = [
+  { name: 'Sixty-Six Multiplayer', href: 'https://github.com/Y3llow45/Sixty-six-game' },
+  { name: 'Job Requirements Scraper', href: 'https://github.com/Y3llow45/scrape-and-process' },
+  { name: 'Tic-Tac-Toe Automation', href: 'https://github.com/Y3llow45/tic-tac-toe-cheat' }
+]
 
-const Projects: React.FC<ProjectsProps> = ({ language }: { language: 'eng' | 'deu' | 'spa' }) => {
-    const trackEvent = (name: string, params: Record<string, any>) => {
-      if (!import.meta.env.PROD) return;
+const labels = {
+  eng: { heading: 'Featured projects', intro: 'Selected personal projects across backend, full-stack, desktop software and data systems.', code: 'View code', more: 'More experiments', all: 'All GitHub repositories' },
+  deu: { heading: 'Ausgewählte Projekte', intro: 'Persönliche Projekte aus Backend, Full-Stack, Desktop-Software und Datenverarbeitung.', code: 'Code ansehen', more: 'Weitere Experimente', all: 'Alle GitHub-Repositories' },
+  spa: { heading: 'Proyectos destacados', intro: 'Proyectos personales de backend, full-stack, software de escritorio y sistemas de datos.', code: 'Ver código', more: 'Más experimentos', all: 'Todos mis repositorios' }
+}
 
-      const query = new URLSearchParams({
-        event: name,
-        ...Object.fromEntries(Object.entries(params).map(([k, v]) => [k, String(v)])),
-      }).toString();
+function trackProject(title: string) {
+  if (!import.meta.env.PROD) return
+  const params = new URLSearchParams({ event: 'click_project_github', project_title: title })
+  fetch('/api/views?' + params.toString(), { keepalive: true }).catch(() => {})
+}
 
-      const url = `/api/views?${query}`;
-
-      if (navigator.sendBeacon?.(url)) {
-        return;
-      }
-      //fallback
-      fetch(url, { keepalive: true, method: 'GET' }).catch(() => {});
-    };
-
+export default function Projects({ language }: { language: Language }) {
+  const t = labels[language]
   return (
-    <section className="projects">
-      <h2>{language === 'eng' && 'My top 12 projects (54 total)'}{language === 'deu' && 'Meine Top 12 Projekte (insgesamt 54)'}{language === 'spa' && 'Mis 12 mejores proyectos (54 en total)'}</h2>
-      <div className="projects-grid">
-        {projectsData.map((project, index) => (
-          <motion.div
-            key={project.id}
-            className="project-card"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <h3>{project.title}</h3>
-            <p>{typeof project.description === 'string' ? project.description : project.description[language]}</p>
-            {project.technologies ? (
-              <>
-                {project.technologies.map((tech, index) => (
-                  <img key={index} src={imgUrls[tech]} alt={tech} className='tech-svg' />
-                ))}
-              </>
-            ) : null}
-            <br></br>
-            <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="github-button"
-                onClick={() =>
-                    trackEvent('click_project_github', {
-                        section: 'projects',
-                        project_id: project.id,
-                        project_title: project.title,
-                    })
-                }
-            >
-                {language === 'eng' && 'View on GitHub'}
-                {language === 'deu' && 'Auf GitHub ansehen'}
-                {language === 'spa' && 'Ver en GitHub'}
-            </a>
-          </motion.div>
-        ))}
+    <section className="content-section projects" id="projects">
+      <div className="section-inner">
+        <p className="section-kicker">03 / WORK</p>
+        <h2>{t.heading}</h2>
+        <p className="section-description">{t.intro}</p>
+        <div className="projects-grid">
+          {projects.map(project => (
+            <article className="project-card" key={project.title}>
+              {project.image && <div className="project-image"><img src={project.image} alt={project.imageAlt ?? project.title} loading="lazy" /></div>}
+              <div className="project-body">
+                <h3>{project.title}</h3>
+                <p>{project.description[language]}</p>
+                <ul className="project-stack" aria-label="Technologies">{project.stack.map(tech => <li key={tech}>{tech}</li>)}</ul>
+                <a className="project-link" href={project.github} onClick={() => trackProject(project.title)} target="_blank" rel="noopener noreferrer">{t.code} ↗</a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="project-archive">
+          <h3>{t.more}</h3>
+          <div className="archive-links">{more.map(item => <a href={item.href} target="_blank" rel="noopener noreferrer" key={item.name}>{item.name} ↗</a>)}</div>
+          <a className="text-link" href="https://github.com/Y3llow45?tab=repositories" target="_blank" rel="noopener noreferrer">{t.all} ↗</a>
+        </div>
       </div>
-      <Footer language={language} />
     </section>
-  );
-};
-
-export default Projects;
+  )
+}

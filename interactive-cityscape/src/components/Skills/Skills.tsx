@@ -1,141 +1,32 @@
-import { motion } from 'framer-motion';
-import './Skills.scss';
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import type { Language } from '../../App'
+import './Skills.scss'
 
-interface SkillsProps {
-  language: string;
+const items = [
+  { title: 'Backend & systems', values: ['Java', 'Spring Boot', 'Node.js', 'Express', 'REST APIs', 'Python', 'JPA / Hibernate', 'RabbitMQ', 'Socket.IO'] },
+  { title: 'Frontend', values: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'Svelte', 'HTML', 'CSS / SCSS'] },
+  { title: 'Data & security', values: ['PostgreSQL', 'MongoDB', 'Redis', 'SQL', 'JWT', 'OAuth2', 'Spring Security'] },
+  { title: 'AI & cloud', values: ['Azure AI Foundry', 'Azure Document Intelligence', 'LLM agents', 'Tool calling', 'Prompt optimization', 'Azure'] },
+  { title: 'Development & testing', values: ['Git', 'GitHub Actions', 'Docker / Podman', 'Linux', 'Gradle / Maven', 'JUnit', 'Jest', 'Selenium'] }
+]
+const labels = {
+  eng: ['Skills', 'Technologies I use to build, operate and test software.'],
+  deu: ['Kenntnisse', 'Technologien, die ich bei Entwicklung, Betrieb und Tests einsetze.'],
+  spa: ['Habilidades', 'Tecnologías con las que desarrollo, opero y pruebo software.']
 }
-
-const skillsData = {
-  backend: [
-    'Java', 'Spring Boot', 
-    'RESTful APIs', 'Microservices', 
-    'RabbitMQ', 'Kafka', 
-    'WebSockets', 'Python', 
-    'NodeJS'            
-  ],
-  frontend: [
-    'React',
-    'TypeScript',
-    'JavaScript',
-    'HTML5',
-    'CSS / Sass / Tailwind CSS',
-    'Next.js',   
-  ],
-  databases: [
-    'PostgreSQL',
-    'JPA / Hibernate',   
-    'Redis',
-    'MongoDB',
-  ],
-  devops: [
-    'Docker',
-    'Kubernetes',
-    'CI/CD / GitHub Actions',
-    'Git / GitHub',
-    'AWS / Vercel',
-  ],
-  testing: [
-    'JUnit',
-    'Jest',
-    'Selenium',
-    'Cypress',
-  ],
-};
-
-interface SkillItemProps {
-  skill: string;
-  index: number;
-}
-
-const SkillItem: React.FC<SkillItemProps> = ({ skill, index }) => {
+export default function Skills({ language }: { language: Language }) {
   return (
-    <motion.li
-      className="skill-item"
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-    >
-      {skill}
-    </motion.li>
-  );
-};
-
-const Skills: React.FC<SkillsProps> = ({ language }) => {
-  const { setRef, isIntersecting } = useIntersectionObserver({ threshold: 0.5 });
-
-  return (
-    <section className="skills" ref={setRef}>
-      <h2 className='skills-h2'>{language === 'eng' && 'My Skills'}{language === 'deu' && 'Meine Fähigkeiten'}{language === 'spa' && 'Mis Habilidades'}</h2>
-      <div className="skills-container">
-        <motion.div
-          className="skill-category backend"
-          initial={{ x: 50, opacity: 0 }}
-          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h3>{language === 'eng' && 'Back-end'}{language === 'deu' && 'Back-end'}{language === 'spa' && 'Back-end'}</h3>
-          <ul>
-            {skillsData.backend.map((skill, index) => (
-              <SkillItem key={skill} skill={skill} index={index} />
-            ))}
-          </ul>
-        </motion.div>
-        <motion.div
-          className="skill-category backend"
-          initial={{ x: -50, opacity: 0 }}
-          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h3>{language === 'eng' && 'Front-end'}{language === 'deu' && 'Front-end'}{language === 'spa' && 'Front-end'}</h3>
-          <ul>
-            {skillsData.frontend.map((skill, index) => (
-              <SkillItem key={skill} skill={skill} index={index} />
-            ))}
-          </ul>
-        </motion.div>
-        <motion.div
-          className="skill-category backend"
-          initial={{ x: -50, opacity: 0 }}
-          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h3>{language === 'eng' && 'Databases'}{language === 'deu' && 'Datenbanken'}{language === 'spa' && 'Bases de datos'}</h3>
-          <ul>
-            {skillsData.databases.map((skill, index) => (
-              <SkillItem key={skill} skill={skill} index={index} />
-            ))}
-          </ul>
-        </motion.div>
-        <motion.div
-          className="skill-category backend"
-          initial={{ x: 50, opacity: 0 }}
-          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h3>{language === 'eng' && 'Devops'}{language === 'deu' && 'Devops'}{language === 'spa' && 'Devops'}</h3>
-          <ul>
-            {skillsData.devops.map((skill, index) => (
-              <SkillItem key={skill} skill={skill} index={index} />
-            ))}
-          </ul>
-        </motion.div>
-        <motion.div
-          className="skill-category backend"
-          initial={{ x: -50, opacity: 0 }}
-          animate={isIntersecting ? { x: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h3>{language === 'eng' && 'Testing'}{language === 'deu' && 'Testen'}{language === 'spa' && 'Pruebas'}</h3>
-          <ul>
-            {skillsData.testing.map((skill, index) => (
-              <SkillItem key={skill} skill={skill} index={index} />
-            ))}
-          </ul>
-        </motion.div>
+    <section className="content-section skills" id="skills">
+      <div className="section-inner">
+        <p className="section-kicker">04 / TOOLKIT</p>
+        <h2>{labels[language][0]}</h2>
+        <p className="section-description">{labels[language][1]}</p>
+        <div className="skills-container">
+          {items.map(group => <article className="skill-category" key={group.title}>
+            <h3>{group.title}</h3>
+            <ul>{group.values.map(skill => <li key={skill}>{skill}</li>)}</ul>
+          </article>)}
+        </div>
       </div>
     </section>
-  );
-};
-
-export default Skills;
+  )
+}

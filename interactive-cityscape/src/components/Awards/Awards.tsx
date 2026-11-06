@@ -60,7 +60,7 @@ const Awards: React.FC<AwardsProps> = ({ language }) => {
     };
 
     return (
-        <section className="awards" ref={setRef}>
+        <section className="content-section awards" id="awards" ref={setRef}>
           <h2>{language === 'eng' && 'Awards'}{language === 'deu' && 'Auszeichnungen'}{language === 'spa' && 'Premios'}</h2>
           <div className="awards-list">
             {awardsData.map((award, index) => (

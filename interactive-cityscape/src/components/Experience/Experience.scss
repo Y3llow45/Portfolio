@@ -1,0 +1,8 @@
+.experience-list { display: grid; gap: 1rem; margin-top: 2rem; }
+.experience-item { background: rgba(19,29,41,.88); border: 1px solid rgba(255,255,255,.10); border-radius: 16px; padding: 1.3rem 1.5rem; text-align: left; }
+.experience-meta { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; font-size: .88rem; color: #b5c5d7; }
+.experience-meta strong { color: #ffb86a; }
+.experience-meta span { white-space: nowrap; }
+.experience-item h3 { color: #fff; margin: .4rem 0; font-size: 1.1rem; }
+.experience-item p { color: #c7d1df; line-height: 1.65; margin: 0; font-size: .96rem; }
+@media (max-width: 600px) { .experience-item { padding: 1rem; } .experience-meta { flex-wrap: wrap; } }
